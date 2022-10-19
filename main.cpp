@@ -4,7 +4,8 @@ using namespace std;
 
 int main()
 {
-    //Główny plik, do którego podłączymy własne moduły, aby wykorzystać w mainie jedynie funkcję, które stworzymy we własnych plikach (chyba najlepiej) '.h'
+    /*Główny plik, do którego podłączymy własne moduły, aby wykorzystać w mainie jedynie funkcję, 
+    które stworzymy we własnych plikach (chyba najlepiej) '.h' + '.cpp'*/
     cout << "Witaj w Wirtualnym Dziekanacie" << endl;
   
     return 0;
