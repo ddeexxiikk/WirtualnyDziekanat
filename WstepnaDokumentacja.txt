@@ -1,0 +1,46 @@
+Plik 'main.exe' - Główny plik, do którego podłączymy własne moduły, aby wykorzystać w mainie jedynie funkcję,
+które stworzymy we własnych plikach (chyba najlepiej) '.h' + '.cpp' - Przynajmniej ja tak będę dołączał
+
+
+Klasa Człowiek:
+Ma 3 atrybuty: imię, nazwisko, poziom dostępu.
+Ma 2 metody: ustawianie atrybutów i wyświetlanie ich.
+
+Klasa Student:
+Ma 3 atrybuty dziedziczone z Klasy Człowiek: imię, nazwisko, poziom dostępu.
+Ma x atrybutów własnych: Pesel, Kierunek, Rok Studiów, Plan Zajęć, Oceny.
+
+Klasa Pracownik:
+Ma 3 atrybuty dziedziczone z Klasy Człowiek: imię, nazwisko, poziom dostępu.
+
+
+Dane do zalogowania do bazy danych:
+Login:
+Hasło:
+
+Poziomy Dostepu:
+1 - Student
+2 - Pracownik Politechniki
+3 - Admin (nasza trójka)
+
+Student może:
+1. Zmienić swoje hasło
+2. Sprawdzić swoje oceny
+3. Sprawdzić swój plan zajęć
+4. Sprawdzić swoją grupę
+
+Pracownik Politechniki może:
+1. Zmienić swoje hasło
+2. Zmienić hasło studenta
+3. Dodać studentowi oceny
+4. Sprawdzić oceny stundeta
+5. Sprawdzić plan zajęć studenta
+6. Dodać plan zajęć studenta
+7. Sprawdzić grupę studenta
+8. Dodać i usunąć Studenta
+
+Admin może:
+1. Wszystko co Student
+2. Wszystko co Pracownik Politechniki
+3. Dodać i usunać Pracownika Politechniki
+4. Dodać i usunać uprawnienia Pracownikowi oraz studentowi
