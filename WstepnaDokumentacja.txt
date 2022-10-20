@@ -2,6 +2,14 @@ Plik 'main.exe' - Główny plik, do którego podłączymy własne moduły, aby w
 które stworzymy we własnych plikach (chyba najlepiej) '.h' + '.cpp' - Przynajmniej ja tak będę dołączał
 
 
+Proces Logowania:
+Jeśli użytkownik 3 razy, poda błędne dane, program się wyłączy
+
+
+W pliku PolaczenieZBaza.sql/h są funkcję, które przepisałem z grupy na FB
+Jeśli macie pomysł na jeszcze jakąś to umieśccie ją w pliku .h z komentarzem że je dodaliście
+
+
 Klasa Człowiek:
 Ma 3 atrybuty: imię, nazwisko, poziom dostępu.
 Ma 2 metody: ustawianie atrybutów i wyświetlanie ich.
@@ -14,9 +22,10 @@ Klasa Pracownik:
 Ma 3 atrybuty dziedziczone z Klasy Człowiek: imię, nazwisko, poziom dostępu.
 
 
-Dane do zalogowania do bazy danych:
+Dane do zalogowania do Bazy Danych:
 Login:
 Hasło:
+
 
 Poziomy Dostepu:
 1 - Student
