@@ -8,6 +8,7 @@ class Czlowiek {
     private:
         string imie, nazwisko;
         int poziom_dostepu;
+
     public:
         Czlowiek(string aImie, string aNazwisko, int aPoziom_dostepu);
         void Powitanie();
