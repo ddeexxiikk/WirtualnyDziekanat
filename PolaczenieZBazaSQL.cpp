@@ -18,30 +18,40 @@ void PolaczenieZBazaSQL()
 
 string LoginZBazySQL()
 {
+    string PoprawnyLogin;
     //Proces Pobierania Loginu z Bazy SQL
     //Trzeba go zrobić
 
+    bool Proces;
 
-    //Jeśli się udało
-    string PoprawnyLogin = "Login";
-    return PoprawnyLogin;
-
-    //Jeśli się nie udało
-    string PoprawnyLogin = nullptr;
-    return PoprawnyLogin;
+    if(Proces) //Jeśli się udało
+    {
+        PoprawnyLogin = "Login";
+        return PoprawnyLogin;
+    }
+    else //Jeśli się nie udało
+    {
+        PoprawnyLogin = "BlednyLogin";
+        return PoprawnyLogin;
+    }
 };
 
 string HasloZBazySQL()
 {
+    string PoprawneHaslo;
     //Proces Pobierania Hasła z Bazy SQL
     //Trzeba go zrobić
 
+    bool Proces;
 
-    //Jeśli się udało
-    string PoprawneHaslo = "Haslo";
-    return PoprawneHaslo;
-
-    //Jeśli się nie udało
-    string PoprawneHaslo = nullptr;
-    return PoprawneHaslo;
+    if(Proces) //Jeśli się udało
+    {
+        PoprawneHaslo = "Login";
+        return PoprawneHaslo;
+    }
+    else //Jeśli się nie udało
+    {
+        PoprawneHaslo = "BlednyLogin";
+        return PoprawneHaslo;
+    }
 };
