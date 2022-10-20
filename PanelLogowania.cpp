@@ -1,15 +1,20 @@
 #include "PanelLogowania.h"
 #include "PolaczenieZBazaSQL.h"
 #include <iostream>
-#include <cstdlib>
 #include <windows.h>
 #include <string>
-//Załączyć panel studenta oraz pracownika
 
 using namespace std;
 
-void PanelLogowania()
+bool PanelLogowania()
 {
+    static int licznik_logowan;
+    if(licznik_logowan == 3)
+    {
+        cout << "Przekroczono limit logowan" << endl;
+        return false;
+    }
+
     string login, haslo;
     cout << "Podaj login: ";
     cin >> login;
@@ -21,7 +26,8 @@ void PanelLogowania()
         cout << "Zalogowano poprawnie,\nZaraz przejdziemy dalej..." << endl;
         Sleep(3000);
 
-        //Włożyc funkcję przechodzącą do panelu studenta/pracownika
+        //Zwraca TRUE i przechodzimy do Panelu Studenta/Pracownika
+        return true;
     }
     else
     {
@@ -32,6 +38,7 @@ void PanelLogowania()
         //Czeka 2 sekundy, czyści ekran i ładuje proces logowania od początku
         Sleep(2000);
         system("CLS");
+        licznik_logowan++;
         PanelLogowania();
     }
 }
