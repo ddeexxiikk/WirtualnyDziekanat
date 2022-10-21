@@ -37,6 +37,7 @@ Student może:
 2. Sprawdzić swoje oceny
 3. Sprawdzić swój plan zajęć
 4. Sprawdzić swoją grupę
+5. Sprawdzic swoje ksiazki
 
 Pracownik Politechniki może:
 1. Zmienić swoje hasło
@@ -44,12 +45,9 @@ Pracownik Politechniki może:
 3. Dodać studentowi oceny
 4. Sprawdzić oceny stundeta
 5. Sprawdzić plan zajęć studenta
-6. Dodać plan zajęć studenta
-7. Sprawdzić grupę studenta
-8. Dodać i usunąć Studenta
+6. Dodac i usunac ksiazke studenta
+7. Dodać plan zajęć studenta
+8. Sprawdzić grupę studenta
+9. Dodać i usunąć Studenta
 
-Admin może:
-1. Wszystko co Student
-2. Wszystko co Pracownik Politechniki
-3. Dodać i usunać Pracownika Politechniki
-4. Dodać i usunać uprawnienia Pracownikowi oraz studentowi
+!!!Admin może zrobić wszystko co reszta, ale musi zrobić to z poziomu Bazy Danych!!!

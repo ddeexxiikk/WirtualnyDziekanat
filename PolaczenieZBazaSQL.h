@@ -5,7 +5,9 @@
 
 using namespace std;
 
-string LoginDoBazyDanych, HasloDoBazyDanych;
+//Wstawic login i haslo do bazy SQL
+//string LoginDoBazyDanych = LOGIN,
+//HasloDoBazyDanych = HASLO;
 
 string LoginZBazySQL();
 string HasloZBazySQL();
@@ -14,31 +16,31 @@ bool PolaczenieZBazaSQL();
 
 bool ZmianaHaslaPrzezStudenta();
 bool ZmianaHaslaPrzezPracownika();
-bool ZmianaHaslaPrzezAdmina();
 
 string PokazNumerStudenta();
-string PokazNumerStudentaPracownik(string aImie, string aNazwisko);
+string PokazNumerStudentaPracownik();
 
 bool DodanieStudenta();
-bool UsuniecieStudenta(string NrStudenta);
-bool DodaniePracownika();
+bool UsuniecieStudenta();
 
 void ZobaczenieOcenStudent();
-void ZobaczenieOcenPracownik(string NrStudenta);
-bool DodanieOceny(string NrStudenta);
+void ZobaczenieOcenPracownik();
+bool DodanieOceny();
 
 void SprawdzenieGrupyStudent();
-void SprawdzenieGrupyPracownik(string NrStudenta);
+void SprawdzenieGrupyPracownik();
 
 void SprawdzenieKsiazekStudent();
-void SprawdzenieKsiazekPracownik(string NrStudenta);
+void SprawdzenieKsiazekPracownik();
+bool DodanieKsiazki();
+bool UsuniecieKsiazki();
 
 void SprawdzeniePlanuZajec();
-void SprawdzeniePlanuZajecPracownik(string NrStudenta);
+void SprawdzeniePlanuZajecPracownik();
 
 void PrzegladniecieOgloszenStudent();
 void PrzegladniecieOgloszenPracownik();
 bool DodanieOgloszen();
-bool UsuniecieOgloszen(string NrOgloszenia);
+bool UsuniecieOgloszen();
 
 #endif
