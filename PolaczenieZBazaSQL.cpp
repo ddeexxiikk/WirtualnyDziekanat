@@ -90,86 +90,40 @@ bool ZmianaHaslaPrzezStudenta()
 
 bool ZmianaHaslaPrzezPracownika()
 {
-    char wybor;
-    cout << "Chcesz zmienic swoje haslo czy haslo studenta? (S - swoje, T - studenta): ";
-    cin >> wybor;
+    string StareHaslo;
+    cout << "Podaj swoje stare haslo: ";
+    cin >> StareHaslo;
+    //Sprawdzic poprawnosc obecnego hasla pracownika
 
-    if(wybor == 'S' || wybor == 's')//Proces zmiany hasla pracownika
+    bool SprawdzenieObecnegoHasla;
+
+    //Jesli haslo jest poprawne
+    if(SprawdzenieObecnegoHasla)
     {
-        string StareHaslo;
-        cout << "Podaj swoje stare haslo: ";
-        cin >> StareHaslo;
-        //Sprawdzic poprawnosc obecnego hasla pracownika
+        string NoweHaslo;
+        cout << "Podaj swoje nowe haslo: ";
+        cin >> NoweHaslo;
 
-        bool SprawdzenieObecnegoHasla;
-
-        //Jesli haslo jest poprawne
-        if(SprawdzenieObecnegoHasla)
-        {
-            string NoweHaslo;
-            cout << "Podaj swoje nowe haslo: ";
-            cin >> NoweHaslo;
-
-            //Zmienic stare haslo na nowe haslo w Bazie SQL
-        }
-        else
-        {
-            cout << "Haslo nie zostalo zmienione" << endl;
-            return false;
-        }
-    }
-    else if(wybor == 'T' || wybor == 't')//Proces zmiany hasla dla studenta
-    {
-        string NrStudenta;
-        cout << "Pamietaj! Haslo studenta, moze zostac jedynie na jego wniosek!" << endl;
-        cout << "Podaj numer studenta, dla ktorego chcesz zmienic haslo: ";
-        cin >> NrStudenta;
-        //Sprawdzic poprawnosc numeru studenta
-
-        string noweHaslo;
-        cout << "Podaj nowe haslo dla studenta: ";
-        cin >> noweHaslo;
-
-        bool SprawdzenieDodaniaHaslaStudenta;
-
-        if(SprawdzenieDodaniaHaslaStudenta)
-        {
-            cout << "Haslo zostalo zmienione" << endl;
-            return true;
-        }
-        else
-        {
-            cout << "Haslo nie zostalo zmienione" << endl;
-            return false;
-        }
+        //Zmienic stare haslo na nowe haslo w Bazie SQL
     }
     else
     {
-        cout << "Niepoprawny wybor!" << endl;
+        cout << "Haslo nie zostalo zmienione" << endl;
         return false;
     }
 };
 
-string PokazNumerStudenta()
+string PokazNumerStudenta(string * aLoginUzytkownika)
 {
-    string NumerStudenta;
-    //Proces Pobierania Numeru Studenta z Bazy SQL
-    //Trzeba go zrobić
+    string NumerStudenta = nullptr;
 
-    bool Proces = PolaczenieZBazaSQL();
+    NumerStudenta = *aLoginUzytkownika;
 
-    if(Proces) //Jeśli się udało
-    {
-        //Zrobić wyciagniecie numeru studenta z Bazy SQL i zapisanie go do zmiennej NumerStudenta
-
-        NumerStudenta = "NumerStudenta";
+    //Jeśli długość numeru studenta jest większa od 3, tzn że program załadował dobrą wartość
+    if(NumerStudenta.size()>3) //Jeśli się udało
         return NumerStudenta;
-    }
     else //Jeśli się nie udało
-    {
-        NumerStudenta = nullptr;
         return NumerStudenta;
-    }
 };
 
 string PokazNumerStudentaPracownik()

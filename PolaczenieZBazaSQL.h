@@ -6,8 +6,8 @@
 using namespace std;
 
 //Wstawic login i haslo do bazy SQL
-//string LoginDoBazyDanych = LOGIN,
-//HasloDoBazyDanych = HASLO;
+//string LoginDoBazyDanych = LOGIN;
+//string HasloDoBazyDanych = HASLO;
 
 string LoginZBazySQL();
 string HasloZBazySQL();
@@ -17,7 +17,7 @@ bool PolaczenieZBazaSQL();
 bool ZmianaHaslaPrzezStudenta();
 bool ZmianaHaslaPrzezPracownika();
 
-string PokazNumerStudenta();
+string PokazNumerStudenta(string * aLoginUzytkownika);
 string PokazNumerStudentaPracownik();
 
 bool DodanieStudenta();
