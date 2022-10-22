@@ -4,7 +4,7 @@
 
 using namespace std;
 
-bool PanelLogowania();
+bool PanelLogowania(string * aLoginUzytkownika);
 
 bool CzyPoprawnyUzytkownik(string aLogin, string aHaslo);
 

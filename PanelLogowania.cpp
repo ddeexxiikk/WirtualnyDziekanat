@@ -6,7 +6,7 @@
 
 using namespace std;
 
-bool PanelLogowania()
+bool PanelLogowania(string * aLoginUzytkownika)
 {
     static int licznik_logowan;
     if(licznik_logowan == 3)
@@ -25,6 +25,7 @@ bool PanelLogowania()
         //Uzytkownik jest poprawny i przechodzimy dalej po 3 sekundach
         cout << "Zalogowano poprawnie,\nZaraz przejdziemy dalej..." << endl;
         Sleep(3000);
+        *aLoginUzytkownika = login;
 
         //Zwraca TRUE i przechodzimy do Panelu Studenta/Pracownika
         return true;
@@ -39,7 +40,7 @@ bool PanelLogowania()
         Sleep(2000);
         system("CLS");
         licznik_logowan++;
-        PanelLogowania();
+        PanelLogowania(nullptr);
     }
 }
 
