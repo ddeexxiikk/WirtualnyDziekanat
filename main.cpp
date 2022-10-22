@@ -12,8 +12,11 @@ int main()
     cout << "Witaj w Wirtualnym Dziekanacie" << endl;
     cout << "Zaloguj sie aby przejsc dalej..." << endl;
 
+    //Zmienna string przechowywuje przez cały czas działania programu, login użytkownika w pamięci RAM
+    string LoginUzytkownikaWMainie;
+
     //Proces logowania
-    if(PanelLogowania())
+    if(PanelLogowania(&LoginUzytkownikaWMainie))
     {
         //Uzytkownik jest poprawny i czekamy 1s
         cout << "Zalogowano poprawnie,\nZaraz przejdziemy dalej..." << endl;
