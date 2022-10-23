@@ -1,6 +1,10 @@
 Plik 'main.exe' - Główny plik, do którego podłączymy własne moduły, aby wykorzystać w mainie jedynie funkcję,
 które stworzymy we własnych plikach (chyba najlepiej) '.h' + '.cpp' - Przynajmniej ja tak będę dołączał
 
+Klasy nazywamy dużymi literami i metody w klasach również
+Zmienne nazywamy małymi literami
+W moich funkcjach zmienne o nazwie 'anazwazmiennej' oznaczane sa jako zmienne, ktore są dodawane jako parametry funkcji przy wywołaniu
+
 
 Dane do zalogowania do Bazy Danych:
 Login: ddeexxiikk
