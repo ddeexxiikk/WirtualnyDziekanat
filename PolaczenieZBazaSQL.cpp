@@ -5,8 +5,7 @@
 
 using namespace std;
 
-//string LoginDoBazyDanychSQL = "ddeexxiikk";
-//string HasloDoBazyDanychSQL = "A*pxqKxM3rTzke7v_.*@";
+
 
 string LoginZBazySQL()
 {
@@ -55,6 +54,10 @@ string HasloZBazySQL()
 bool PolaczenieZBazaSQL()
 {
     bool proces;
+
+    const string LoginDoBazyDanychSQL = "ddeexxiikk";
+    const string HasloDoBazyDanychSQL = "A*pxqKxM3rTzke7v_.*@";
+
     //Proces Łączenia z Bazą SQL
     //Trzeba go zrobić
 
