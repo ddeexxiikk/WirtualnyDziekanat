@@ -5,8 +5,8 @@
 
 using namespace std;
 
-string login_z_bazy_SQL();
-string haslo_z_bazy_SQL();
+string poprawny_login_z_bazy_SQL();
+string poprawne_haslo_z_bazy_SQL();
 
 bool polaczenie_z_baza_SQL();
 

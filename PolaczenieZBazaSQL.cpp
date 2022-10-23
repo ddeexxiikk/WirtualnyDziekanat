@@ -21,7 +21,7 @@ bool polaczenie_z_baza_SQL()
         return false;
 };
 
-string login_z_bazy_SQL()
+string poprawny_login_z_bazy_SQL()
 {
     string poprawny_login;
     //Proces Pobierania Loginu z Bazy SQL
@@ -31,8 +31,6 @@ string login_z_bazy_SQL()
 
     if(proces) //Jeśli się udało
     {
-        //Zrobić wyciagniecie loginu z Bazy SQL i zapisanie go do zmiennej PoprawnyLogin
-
         poprawny_login = "Login";
         return poprawny_login;
     }
@@ -43,7 +41,7 @@ string login_z_bazy_SQL()
     }
 };
 
-string haslo_z_bazy_SQL()
+string poprawne_haslo_z_bazy_SQL()
 {
     string poprawne_haslo;
     //Proces Pobierania Hasła z Bazy SQL
@@ -53,8 +51,6 @@ string haslo_z_bazy_SQL()
 
     if(proces) //Jeśli się udało
     {
-        //Zrobić wyciagniecie hasla z Bazy SQL i zapisanie go do zmiennej PoprawneHaslo
-
         poprawne_haslo = "Login";
         return poprawne_haslo;
     }
