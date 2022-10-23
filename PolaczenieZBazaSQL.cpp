@@ -5,17 +5,8 @@
 
 using namespace std;
 
-bool PolaczenieZBazaSQL()
-{
-    //Proces Łączenia z Bazą SQL
-    //Trzeba go zrobić
-
-    bool proces;
-    if(proces) // Jeśli się udało
-        return true;
-    else //Jeśli się nie udało
-        return false;
-};
+//string LoginDoBazyDanychSQL = "ddeexxiikk";
+//string HasloDoBazyDanychSQL = "A*pxqKxM3rTzke7v_.*@";
 
 string LoginZBazySQL()
 {
@@ -59,6 +50,18 @@ string HasloZBazySQL()
         PoprawneHaslo = nullptr;
         return PoprawneHaslo;
     }
+};
+
+bool PolaczenieZBazaSQL()
+{
+    bool proces;
+    //Proces Łączenia z Bazą SQL
+    //Trzeba go zrobić
+
+    if(proces) // Jeśli się udało
+        return true;
+    else //Jeśli się nie udało
+        return false;
 };
 
 bool ZmianaHaslaPrzezStudenta()

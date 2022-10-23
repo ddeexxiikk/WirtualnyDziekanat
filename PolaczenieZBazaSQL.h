@@ -5,9 +5,9 @@
 
 using namespace std;
 
-//Wstawic login i haslo do bazy SQL
-//string LoginDoBazyDanych = LOGIN;
-//string HasloDoBazyDanych = HASLO;
+//Login i haslo do bazy danych, aby pobierac te dane z tych zmiennych
+//string LoginDoBazyDanychSQL;
+//string HasloDoBazyDanychSQL;
 
 string LoginZBazySQL();
 string HasloZBazySQL();
