@@ -3,8 +3,11 @@ które stworzymy we własnych plikach (chyba najlepiej) '.h' + '.cpp' - Przynajm
 
 
 Dane do zalogowania do Bazy Danych:
-Login: root
-Hasło: 1-PASSword_0
+Login: ddeexxiikk
+Hasło: A*pxqKxM3rTzke7v_.*@
+
+Plik SQL wrzucę niedługo do REPO, żebyście mogli wystartować własny server MySQL na localhost, bo nie wiem jak to wygląda w sytuacji,
+Gdybym wam udostępnił moje pliki konfiguracyjne stworzone przez CLion do dodania bazy do projektu
 
 
 Informacje o logowaniu:
@@ -16,8 +19,8 @@ Proces Logowania:
 3. Login użytkownika jest przechowywany w zmiennej stworzonej w main'ie przez całe działanie programu, a dostęp do niego jest przez jego adres w funkcji
 
 
-W pliku PolaczenieZBaza.sql/h są funkcję, które przepisałem z grupy na FB
-Jeśli macie pomysł na jeszcze jakąś to umieśccie ją w pliku .h z komentarzem że je dodaliście
+W pliku PolaczenieZBaza.cpp/h są funkcję, które przepisałem z grupy na FB
+Jeśli macie pomysł na jeszcze jakąś to umieśćcie ją w pliku PolaczenieZBaza.h z komentarzem że je dodaliście
 
 
 Klasa Człowiek:
