@@ -9,9 +9,8 @@ class Czlowiek {
         string login, imie, nazwisko;
         int poziom_dostepu;
 
-
     public:
-        Czlowiek(string aLogin, string aImie, string aNazwisko, int aPoziom_dostepu);
+        Czlowiek(string * alogin, string * aimie, string * anazwisko, int * apoziom_dostepu);
 };
 
 #endif

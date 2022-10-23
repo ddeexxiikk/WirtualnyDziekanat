@@ -25,11 +25,10 @@ Jeśli macie pomysł na jeszcze jakąś to umieśćcie ją w pliku PolaczenieZBa
 
 Klasa Człowiek:
 Ma 3 atrybuty: imię, nazwisko, poziom dostępu.
-Ma 2 metody: ustawianie atrybutów i wyświetlanie ich.
 
 Klasa Student:
 Ma 3 atrybuty dziedziczone z Klasy Człowiek: imię, nazwisko, poziom dostępu.
-Ma x atrybutów własnych: Pesel, Kierunek, Rok Studiów, Plan Zajęć, Oceny.
+Ma x atrybutów własnych: Kierunek, Rok Studiów, Plan Zajęć, Oceny.
 
 Klasa Pracownik:
 Ma 3 atrybuty dziedziczone z Klasy Człowiek: imię, nazwisko, poziom dostępu.
