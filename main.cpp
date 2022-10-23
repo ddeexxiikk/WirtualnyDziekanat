@@ -1,6 +1,4 @@
-#include "PolaczenieZBazaSQL.h"
 #include "PanelLogowania.h"
-#include "Czlowiek.h"
 #include <windows.h>
 #include <iostream>
 #include <string>

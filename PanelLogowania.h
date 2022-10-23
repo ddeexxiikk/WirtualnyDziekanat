@@ -9,4 +9,3 @@ bool PanelLogowania(string * aLoginUzytkownika);
 bool CzyPoprawnyUzytkownik(string aLogin, string aHaslo);
 
 #endif
-
