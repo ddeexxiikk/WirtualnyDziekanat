@@ -5,58 +5,12 @@
 
 using namespace std;
 
-
-
-string LoginZBazySQL()
-{
-    string PoprawnyLogin;
-    //Proces Pobierania Loginu z Bazy SQL
-    //Trzeba go zrobić
-
-    bool Proces = PolaczenieZBazaSQL();
-
-    if(Proces) //Jeśli się udało
-    {
-        //Zrobić wyciagniecie loginu z Bazy SQL i zapisanie go do zmiennej PoprawnyLogin
-
-        PoprawnyLogin = "Login";
-        return PoprawnyLogin;
-    }
-    else //Jeśli się nie udało
-    {
-        PoprawnyLogin = nullptr;
-        return PoprawnyLogin;
-    }
-};
-
-string HasloZBazySQL()
-{
-    string PoprawneHaslo;
-    //Proces Pobierania Hasła z Bazy SQL
-    //Trzeba go zrobić
-
-    bool Proces = PolaczenieZBazaSQL();
-
-    if(Proces) //Jeśli się udało
-    {
-        //Zrobić wyciagniecie hasla z Bazy SQL i zapisanie go do zmiennej PoprawneHaslo
-
-        PoprawneHaslo = "Login";
-        return PoprawneHaslo;
-    }
-    else //Jeśli się nie udało
-    {
-        PoprawneHaslo = nullptr;
-        return PoprawneHaslo;
-    }
-};
-
-bool PolaczenieZBazaSQL()
+bool polaczenie_z_baza_SQL()
 {
     bool proces;
 
-    const string LoginDoBazyDanychSQL = "ddeexxiikk";
-    const string HasloDoBazyDanychSQL = "A*pxqKxM3rTzke7v_.*@";
+    const string login_do_bazy_danych_SQL = "ddeexxiikk";
+    const string haslo_do_bazy_danych_SQL = "A*pxqKxM3rTzke7v_.*@";
 
     //Proces Łączenia z Bazą SQL
     //Trzeba go zrobić
@@ -67,16 +21,60 @@ bool PolaczenieZBazaSQL()
         return false;
 };
 
-bool ZmianaHaslaPrzezStudenta()
+string login_z_bazy_SQL()
 {
-    string HasloObecne;
+    string poprawny_login;
+    //Proces Pobierania Loginu z Bazy SQL
+    //Trzeba go zrobić
+
+    bool proces = polaczenie_z_baza_SQL();
+
+    if(proces) //Jeśli się udało
+    {
+        //Zrobić wyciagniecie loginu z Bazy SQL i zapisanie go do zmiennej PoprawnyLogin
+
+        poprawny_login = "Login";
+        return poprawny_login;
+    }
+    else //Jeśli się nie udało
+    {
+        poprawny_login = nullptr;
+        return poprawny_login;
+    }
+};
+
+string haslo_z_bazy_SQL()
+{
+    string poprawne_haslo;
+    //Proces Pobierania Hasła z Bazy SQL
+    //Trzeba go zrobić
+
+    bool proces = polaczenie_z_baza_SQL();
+
+    if(proces) //Jeśli się udało
+    {
+        //Zrobić wyciagniecie hasla z Bazy SQL i zapisanie go do zmiennej PoprawneHaslo
+
+        poprawne_haslo = "Login";
+        return poprawne_haslo;
+    }
+    else //Jeśli się nie udało
+    {
+        poprawne_haslo = nullptr;
+        return poprawne_haslo;
+    }
+};
+
+bool zmiana_hasla_przez_studenta()
+{
+    string haslo_obecne;
     cout << "Podaj swoje obecne haslo: ";
-    cin >> HasloObecne;
+    cin >> haslo_obecne;
     //Sprawdzic poprawnosc obecnego hasla dla studenta
 
-    string HasloNowe;
+    string haslo_nowe;
     cout << "Podaj nowe haslo: ";
-    cin >> HasloNowe;
+    cin >> haslo_nowe;
 
     bool proces;
     //Proces Zmiany obecnego hasła na nowe hasło przez Studenta
@@ -94,17 +92,17 @@ bool ZmianaHaslaPrzezStudenta()
     }
 };
 
-bool ZmianaHaslaPrzezPracownika()
+bool zmiana_hasla_przez_pracownika()
 {
-    string StareHaslo;
+    string stare_haslo;
     cout << "Podaj swoje stare haslo: ";
-    cin >> StareHaslo;
+    cin >> stare_haslo;
     //Sprawdzic poprawnosc obecnego hasla pracownika
 
-    bool SprawdzenieObecnegoHasla;
+    bool sprawdzenie_obecneg_hasla;
 
     //Jesli haslo jest poprawne
-    if(SprawdzenieObecnegoHasla)
+    if(sprawdzenie_obecneg_hasla)
     {
         string NoweHaslo;
         cout << "Podaj swoje nowe haslo: ";
@@ -119,58 +117,58 @@ bool ZmianaHaslaPrzezPracownika()
     }
 };
 
-string PokazNumerStudenta(string * aLoginUzytkownika)
+string pokaz_numer_student(string * alogin_uzytkownika)
 {
-    string NumerStudenta = nullptr;
+    string numer_studenta = nullptr;
 
-    NumerStudenta = *aLoginUzytkownika;
+    numer_studenta = *alogin_uzytkownika;
 
-    //Jeśli długość numeru studenta jest większa od 3, tzn że program załadował dobrą wartość
-    if(NumerStudenta.size()>3) //Jeśli się udało
-        return NumerStudenta;
+    //Jeśli długość numeru studenta jest większa od 5, tzn., że program załadował jakiś login
+    if(numer_studenta.size()>5) //Jeśli się udało
+        return numer_studenta;
     else //Jeśli się nie udało
-        return NumerStudenta;
+        return numer_studenta;
 };
 
-string PokazNumerStudentaPracownik()
+string pokaz_numer_studenta_pracownik()
 {
-    string Imie, Nazwisko;
+    string imie, nazwisko;
     cout << "Podaj imie studenta: ";
-    cin >> Imie;
+    cin >> imie;
     cout << "Podaj nazwisko studenta: ";
-    cin >> Nazwisko;
+    cin >> nazwisko;
 
-    string NumerStudenta;
-    bool Proces;
+    string numer_studenta;
+    bool proces;
     //Proces Pobierania Numeru Studenta z Bazy SQL
     //Trzeba go zrobić
 
-    if(Proces) //Jeśli się udało
+    if(proces) //Jeśli się udało
     {
         //Zrobić wyciagniecie numeru studenta z Bazy SQL i zapisanie go do zmiennej NumerStudenta
 
-        NumerStudenta = "NumerStudenta";
-        return NumerStudenta;
+        numer_studenta = "NumerStudenta";
+        return numer_studenta;
     }
     else //Jeśli się nie udało
     {
-        NumerStudenta = nullptr;
-        return NumerStudenta;
+        numer_studenta = nullptr;
+        return numer_studenta;
     }
 };
 
-bool DodanieStudenta()
+bool dodanie_studenta()
 {
-    string Imie, Nazwisko, Haslo, NrStudenta;
+    string imie, nazwisko, haslo, numer_studenta;
     const int poziom_dostepu = 1;
     cout << "Podaj imie studenta: ";
-    cin >> Imie;
+    cin >> imie;
     cout << "Podaj nazwisko studenta: ";
-    cin >> Nazwisko;
+    cin >> nazwisko;
     cout << "Podaj haslo studenta: ";
-    cin >> Haslo;
+    cin >> haslo;
     cout << "Podaj numer studenta: ";
-    cin >> NrStudenta;
+    cin >> numer_studenta;
 
     bool proces;
     //Proces Dodania Studenta do Bazy SQL
@@ -189,19 +187,19 @@ bool DodanieStudenta()
     }
 };
 
-bool UsuniecieStudenta()
+bool usuniecie_studenta()
 {
     char wybor;
     cout << "Czy na pewno chcesz usunac studenta? (T - tak, N - nie): ";
     cin >> wybor;
 
-    if(wybor == 'N' || wybor == 'n')//Jesli uzytkownik zdecydowal sie wyjsc z tej opcji
+    if(wybor == 'N' || wybor == 'n')//Jeśli użytkownik zdecydował się wyjść z tej opcji
         return false;
     else
     {
-        string NrStudenta;
+        string numer_studenta;
         cout << "Podaj numer studenta, ktorego chcesz usunac: ";
-        cin >> NrStudenta;
+        cin >> numer_studenta;
 
         bool proces;
         //Proces Usunięcia Studenta z Bazy SQL
@@ -214,75 +212,63 @@ bool UsuniecieStudenta()
     }
 };
 
-bool DodaniePracownika()
+void zobaczenie_ocen_student()
 {
-    //Proces Dodania Pracownika do Bazy SQL
+    //Proces Zobaczenia Ocen Studenta
     //Trzeba go zrobić
+};
 
+void zobaczenie_ocen_studenta_pracownik()
+{
+    //Proces Zobaczenia Ocen Studenta
+    //Trzeba go zrobić
+};
+
+bool dodanie_oceny()
+{
     bool proces;
-    if(proces) // Jeśli się udało
-        return true;
-    else //Jeśli się nie udało
-        return false;
-};
-
-void ZobaczenieOcenStudent()
-{
-    //Proces Zobaczenia Ocen Studenta
-    //Trzeba go zrobić
-};
-
-void ZobaczenieOcenPracownik()
-{
-    //Proces Zobaczenia Ocen Studenta
-    //Trzeba go zrobić
-};
-
-bool DodanieOceny()
-{
     //Proces Dodania Oceny Studenta
     //Trzeba go zrobić
 
-    bool proces;
     if(proces) // Jeśli się udało
         return true;
     else //Jeśli się nie udało
         return false;
 };
 
-void SprawdzenieGrupyStudent()
+void sprawdzenie_grupy_student()
 {
     //Proces Sprawdzenia Grupy Studenta
     //Trzeba go zrobić
 };
 
-void SprawdzenieGrupyPracownik()
+void sprawdzenie_grupy_studenta_pracownik()
 {
     //Proces Sprawdzenia Grupy Studenta
     //Trzeba go zrobić
 };
 
-void SprawdzenieKsiazekStudent()
+void sprawdzenie_ksiazek_student()
 {
     //Proces Sprawdzenia Książek Studenta
     //Trzeba go zrobić
 };
 
-void SprawdzenieKsiazekPracownik()
+void sprawdzenie_ksiazek_studenta_pracownik()
 {
-    string NrStudenta;
+    string numer_studenta;
     cout << "Podaj numer studenta, ktoremu chcesz sprawdzic ksiazki: ";
-    cin >> NrStudenta;
+    cin >> numer_studenta;
 
     //Proces Sprawdzenia Książek Studenta w bazie SQL
     //Trzeba go zrobić
 };
 
-bool DodanieKsiazki()
+bool dodanie_ksiazki()
 {
-    string NrStudenta;
+    string numer_studenta;
     cout << "Podaj numer studenta, ktoremu chcesz dodac ksiazke: ";
-    cin >> NrStudenta;
+    cin >> numer_studenta;
 
     bool proces;
     //Proces Dodania Książki Studenta
@@ -301,11 +287,11 @@ bool DodanieKsiazki()
     }
 };
 
-bool UsuniecieKsiazki()
+bool usuniecie_ksiazki()
 {
-    string NrStudenta;
+    string numer_studenta;
     cout << "Podaj numer studenta, ktoremu chcesz usunac ksiazke: ";
-    cin >> NrStudenta;
+    cin >> numer_studenta;
 
     bool proces;
     //Proces Usunięcia Książki Studenta
@@ -324,17 +310,17 @@ bool UsuniecieKsiazki()
     }
 };
 
-void SprawdzeniePlanuZajec()
+void sprawdzenie_planu_zajec_student()
 {
     //Proces Sprawdzenia Planu Zajęć
     //Trzeba go zrobić
 };
 
-void SprawdzeniePlanuZajecPracownik()
+void sprawdzenie_planu_zajec_studenta_pracownik()
 {
-    string NrStudenta;
+    string numer_studenta;
     cout << "Podaj numer studenta, dla którego chcesz sprawdzic plan zajec: ";
-    cin >> NrStudenta;
+    cin >> numer_studenta;
 
     bool proces;
     //Proces Sprawdzenia Planu Zajęć wraz z komendą SQL
@@ -342,7 +328,7 @@ void SprawdzeniePlanuZajecPracownik()
 
     if(proces)
     {
-        cout << "Plan zajec studenta o numerze: " << NrStudenta << " to: " << endl;
+        cout << "Plan zajec studenta o numerze: " << numer_studenta << " to: " << endl;
         //Pokazac Plan Zajec Studenta z bazy SQL
     }
     else
@@ -351,13 +337,13 @@ void SprawdzeniePlanuZajecPracownik()
     }
 };
 
-void PrzegladniecieOgloszen()
+void przegladniecie_ogloszen()
 {
     //Proces Przeglądnięcia Ogłoszeń
     //Trzeba go zrobić
 };
 
-bool DodanieOgloszen()
+bool dodanie_ogloszen()
 {
     //bool Proces - warunek sprawdzający czy funkcja połączyła się dobrze z bazą i dodała ogłoszenie
     bool proces;
@@ -385,14 +371,12 @@ bool DodanieOgloszen()
     }
 };
 
-bool UsuniecieOgloszen()
+bool usuniecie_ogloszen()
 {
-
-
     //Dodanie tytułu ogłoszenia
-    string NrOgloszenia;
+    string numer_ogloszenia;
     cout << "Podaj numer ogloszenia, ktore chcesz usunac: ";
-    cin >> NrOgloszenia;
+    cin >> numer_ogloszenia;
 
     //bool Proces - warunek sprawdzający czy funkcja połączyła się dobrze z bazą i usunęła ogłoszenie
     bool proces;
@@ -402,7 +386,7 @@ bool UsuniecieOgloszen()
 
     if(proces) // Jeśli się udało
     {
-        cout << "Usunieto ogloszenie o numerze: " << NrOgloszenia << endl;
+        cout << "Usunieto ogloszenie o numerze: " << numer_ogloszenia << endl;
         return  true;
     }
     else//Jeśli się nie udało

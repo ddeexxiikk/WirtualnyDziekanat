@@ -5,38 +5,37 @@
 
 using namespace std;
 
-string LoginZBazySQL();
-string HasloZBazySQL();
+string login_z_bazy_SQL();
+string haslo_z_bazy_SQL();
 
-bool PolaczenieZBazaSQL();
+bool polaczenie_z_baza_SQL();
 
-bool ZmianaHaslaPrzezStudenta();
-bool ZmianaHaslaPrzezPracownika();
+bool zmiana_hasla_przez_studenta();
+bool zmiana_hasla_przez_pracownika();
 
-string PokazNumerStudenta(string * aLoginUzytkownika);
-string PokazNumerStudentaPracownik();
+string pokaz_numer_student(string * alogin_uzytkownika);
+string pokaz_numer_studenta_pracownik();
 
-bool DodanieStudenta();
-bool UsuniecieStudenta();
+bool dodanie_studenta();
+bool usuniecie_studenta();
 
-void ZobaczenieOcenStudent();
-void ZobaczenieOcenPracownik();
-bool DodanieOceny();
+void zobaczenie_ocen_student();
+void zobaczenie_ocen_studenta_pracownik();
+bool dodanie_oceny();
 
-void SprawdzenieGrupyStudent();
-void SprawdzenieGrupyPracownik();
+void sprawdzenie_grupy_student();
+void sprawdzenie_grupy_studenta_pracownik();
 
-void SprawdzenieKsiazekStudent();
-void SprawdzenieKsiazekPracownik();
-bool DodanieKsiazki();
-bool UsuniecieKsiazki();
+void sprawdzenie_ksiazek_student();
+void sprawdzenie_ksiazek_studenta_pracownik();
+bool dodanie_ksiazki();
+bool usuniecie_ksiazki();
 
-void SprawdzeniePlanuZajec();
-void SprawdzeniePlanuZajecPracownik();
+void sprawdzenie_planu_zajec_student();
+void sprawdzenie_planu_zajec_studenta_pracownik();
 
-void PrzegladniecieOgloszenStudent();
-void PrzegladniecieOgloszenPracownik();
-bool DodanieOgloszen();
-bool UsuniecieOgloszen();
+void przegladniecie_ogloszen();
+bool dodanie_ogloszen();
+bool usuniecie_ogloszen();
 
 #endif

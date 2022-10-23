@@ -6,7 +6,7 @@
 
 using namespace std;
 
-bool PanelLogowania(string * aLoginUzytkownika)
+bool PanelLogowania(string * alogin_uzytkownika)
 {
     static int licznik_logowan;
     if(licznik_logowan == 3)
@@ -25,7 +25,7 @@ bool PanelLogowania(string * aLoginUzytkownika)
         //Uzytkownik jest poprawny i przechodzimy dalej po 3 sekundach
         cout << "Zalogowano poprawnie,\nZaraz przejdziemy dalej..." << endl;
         Sleep(3000);
-        *aLoginUzytkownika = login;
+        *alogin_uzytkownika = login;
 
         //Zwraca TRUE i przechodzimy do Panelu Studenta/Pracownika
         return true;
@@ -44,12 +44,12 @@ bool PanelLogowania(string * aLoginUzytkownika)
     }
 }
 
-bool CzyPoprawnyUzytkownik(string aLogin, string aHaslo)
+bool CzyPoprawnyUzytkownik(string alogin, string ahaslo)
 {
-    string LoginPoprawny = LoginZBazySQL(); /*Trzeba go dopiero pobrac z bazy i podmienic prosto do IF'a*/
-    string HasloPoprawne = HasloZBazySQL(); /*Trzeba je dopiero pobrac z bazy i podmienic prosto do IF'a*/
+    string login_poprawny = login_z_bazy_SQL(); /*Trzeba go dopiero pobrac z bazy i podmienic prosto do IF'a*/
+    string haslo_poprawne = haslo_z_bazy_SQL(); /*Trzeba je dopiero pobrac z bazy i podmienic prosto do IF'a*/
 
-    if(aLogin == LoginPoprawny && aHaslo == HasloPoprawne)
+    if(alogin == login_poprawny && ahaslo == haslo_poprawne)
         return true;
     else
         return false;

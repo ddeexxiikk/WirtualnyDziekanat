@@ -11,22 +11,22 @@ int main()
     cout << "Zaloguj sie aby przejsc dalej..." << endl;
 
     //Zmienna string przechowywuje przez cały czas działania programu, login użytkownika w pamięci RAM
-    string LoginUzytkownikaWMainie;
+    string login_uzytkownika_w_mainie;
 
     //Proces logowania
-    if(PanelLogowania(&LoginUzytkownikaWMainie))
+    if(PanelLogowania(&login_uzytkownika_w_mainie))
     {
         //Uzytkownik jest poprawny i czekamy 1s
         cout << "Zalogowano poprawnie,\nZaraz przejdziemy dalej..." << endl;
         Sleep(1000);
-    }
-    else
-        //Jeśli użytkownik więcej niż 3 pomyli się przy logowaniu, program się wyłączy
-        exit(0);
 
-    //Od tego momentu możemy przejść do profilu Studenta/Pracownika
-    //Mozecie tutaj wrzucic funkcje profilow
-    //W tym momencie jestem w stanie tylko sprawdzic czy dziala logowanie na sztywne dane, bo jeszcze nie stworzyłem bazy danych
+        //Od tego momentu możemy przejść do profilu Studenta/Pracownika
+        //Mozecie tutaj wrzucic funkcje profilow
+        //W tym momencie jestem w stanie tylko sprawdzic czy dziala logowanie na sztywne dane
+
+    }
+    else //Jeśli użytkownik więcej niż 3 pomyli się przy logowaniu, program się wyłączy
+        exit(0);
 
     return 0;
 }
