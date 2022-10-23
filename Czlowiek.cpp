@@ -3,10 +3,10 @@
 
 using namespace std;
 
-    Czlowiek::Czlowiek(string aLogin, string aImie, string aNazwisko, int aPoziom_dostepu)
+    Czlowiek::Czlowiek(string * alogin, string * aimie, string * anazwisko, int * apoziom_dostepu)
     {
-        imie = aImie;
-        nazwisko = aNazwisko;
-        poziom_dostepu = aPoziom_dostepu;
-        login = aLogin;
+        imie = *aimie;
+        nazwisko = *anazwisko;
+        poziom_dostepu = *apoziom_dostepu;
+        login = *alogin;
     };
