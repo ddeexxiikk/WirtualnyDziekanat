@@ -2,9 +2,13 @@ Plik 'main.exe' - Główny plik, do którego podłączymy własne moduły, aby w
 które stworzymy we własnych plikach (chyba najlepiej) '.h' + '.cpp' - Przynajmniej ja tak będę dołączał
 
 
+Dane do zalogowania do Bazy Danych:
+Login: root
+Hasło: 1-PASSword_0
+
+
 Informacje o logowaniu:
-1. Login każdego studenta to jego Numer składający się z 6 cyfr
-2. Login pracownika, to też numer ale składający się z 5 cyfr
+1. Login każdego studenta i pracownika to jego numer składający się z 6 cyfr
 
 Proces Logowania:
 1. Jeśli użytkownik 3 razy, poda błędne dane, program się wyłączy
@@ -28,15 +32,9 @@ Klasa Pracownik:
 Ma 3 atrybuty dziedziczone z Klasy Człowiek: imię, nazwisko, poziom dostępu.
 
 
-Dane do zalogowania do Bazy Danych:
-Login:
-Hasło:
-
-
 Poziomy Dostepu:
 1 - Student
 2 - Pracownik Politechniki
-3 - Admin (nasza trójka)
 
 Student może:
 1. Zmienić swoje hasło
@@ -54,5 +52,3 @@ Pracownik Politechniki może:
 6. Dodać plan zajęć studenta
 7. Sprawdzić grupę studenta
 8. Dodać i usunąć Studenta
-
-!!!Admin może zrobić wszystko co reszta, ale musi zrobić to z poziomu Bazy Danych!!!
