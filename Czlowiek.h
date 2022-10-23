@@ -6,12 +6,12 @@ using namespace std;
 
 class Czlowiek {
     private:
-        string imie, nazwisko;
+        string login, imie, nazwisko;
         int poziom_dostepu;
 
+
     public:
-        Czlowiek(string aImie, string aNazwisko, int aPoziom_dostepu);
-        void Powitanie();
+        Czlowiek(string aLogin, string aImie, string aNazwisko, int aPoziom_dostepu);
 };
 
 #endif
