@@ -5,12 +5,18 @@
 
 using namespace std;
 
+/* Funkcja poprawny_login_z_bazy_SQL wyciąga poprawny login z bazy SQL */
 string poprawny_login_z_bazy_SQL();
+
+/* Funkcja poprawne_haslo_z_bazy_SQL wyciąga poprawne hasło z bazy SQL */
 string poprawne_haslo_z_bazy_SQL();
 
 bool polaczenie_z_baza_SQL();
 
+/* Funkcja zmiana_hasla_przez_studenta zmienia hasło studenta, kiedy zostanie wywołana przez studenta w panelu */
 bool zmiana_hasla_przez_studenta();
+
+/* Funkcja zmiana_hasla_przez_pracownika zmienia hasło pracownika, kiedy zostanie wywołana przez pracownika w panelu */
 bool zmiana_hasla_przez_pracownika();
 
 string pokaz_numer_student(string * alogin_uzytkownika);
