@@ -1,9 +1,12 @@
-Plik 'main.exe' - Główny plik, do którego podłączymy własne moduły, aby wykorzystać w mainie jedynie funkcję,
+Plik 'main.exe' - Główny plik, do którego podłączymy własne moduły, aby wykorzystać w main'ie jedynie funkcję,
 które stworzymy we własnych plikach (chyba najlepiej) '.h' + '.cpp' - Przynajmniej ja tak będę dołączał
 
 Klasy nazywamy dużymi literami i metody w klasach również
 Zmienne nazywamy małymi literami
-W moich funkcjach zmienne o nazwie 'anazwazmiennej' oznaczane sa jako zmienne, ktore są dodawane jako parametry funkcji przy wywołaniu
+W moich funkcjach zmienne o nazwie 'anazwazmiennej' oznaczane są jako zmienne, które są dodawane jako parametry funkcji przy wywołaniu
+
+
+Dodałem komentarze, do części funkcji, ale nie wszystkich. Ostatecznie wszystkie funkcję, przerzuce do klasy Student i Pracownik, gdy je stworzę.
 
 
 Dane do zalogowania do Bazy Danych:
@@ -19,12 +22,12 @@ Informacje o logowaniu:
 
 Proces Logowania:
 1. Jeśli użytkownik 3 razy, poda błędne dane, program się wyłączy
-2. Jeśli użykownik chce zmienić konto, na które jest zalogowany, musi uruchomić program od nowa. (Jak zrobimy cały projekt to można to zmienić jeśli starczy czasu)
+2. Jeśli użytkownik chce zmienić konto, na które jest zalogowany, musi uruchomić program od nowa. (Jak zrobimy cały projekt to można to zmienić jeśli starczy czasu)
 3. Login użytkownika jest przechowywany w zmiennej stworzonej w main'ie przez całe działanie programu, a dostęp do niego jest przez jego adres w funkcji
 
 
 W pliku PolaczenieZBaza.cpp/h są funkcję, które przepisałem z grupy na FB
-Jeśli macie pomysł na jeszcze jakąś to umieśćcie ją w pliku PolaczenieZBaza.h z komentarzem że je dodaliście
+Jeśli macie pomysł na jeszcze jakąś to umieśćcie ją w pliku PolaczenieZBaza.h z komentarzem, że je dodaliście
 
 
 Klasa Człowiek:
