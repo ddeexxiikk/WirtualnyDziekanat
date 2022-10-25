@@ -40,20 +40,20 @@ INSERT INTO `dane_studentow` (`LOGIN`, `Imię`, `Nazwisko`, `Kierunek`, `Grupa`)
 ('200021', 'Grzegorz', 'Chrust', 'IE', 11),
 ('200022', 'Jarosław', 'Kaczka', 'IE', 12),
 ('200023', 'Michał', 'Człek', 'IE', 12),
-('200024', 'Kamil', 'Kras', 'IE', 12),
-('200025', 'Angelina', 'Julie', 'IE', 12),
-('200026', 'Kacper', 'Balast', 'IE', 11),
-('200027', 'Yuri', 'Klewik', 'IE', 12),
-('200028', 'Julian', 'Roślina', 'IE', 12),
-('200029', 'Jan', 'Komik', 'IE', 11),
-('200030', 'Gregorij', 'Anataczko', 'IE', 11),
-('200031', 'Julienne', 'Assange', 'IE', 11),
-('200032', 'Julia', 'Kram', 'IE', 11),
-('200033', 'Kacper', 'Chlew', 'IE', 11),
-('200034', 'Michał', 'Wiśniewski', 'IE', 12),
-('200035', 'Karol', 'Klimko', 'IE', 11),
-('200036', 'Józef', 'Zawadzki', 'IE', 12),
-('200037', 'Małgorzata', 'Wybitna', 'IE', 12);
+('200024', 'Kamil', 'Kras', 'MS', 12),
+('200025', 'Angelina', 'Julie', 'MS', 12),
+('200026', 'Kacper', 'Balast', 'MS', 11),
+('200027', 'Yuri', 'Klewik', 'MS', 12),
+('200028', 'Julian', 'Roślina', 'MS', 12),
+('200029', 'Jan', 'Komik', 'MS', 11),
+('200030', 'Gregorij', 'Anataczko', 'MS', 11),
+('200031', 'Julienne', 'Assange', 'MS', 11),
+('200032', 'Julia', 'Kram', 'IT', 11),
+('200033', 'Kacper', 'Chlew', 'IT', 11),
+('200034', 'Michał', 'Wiśniewski', 'IT', 12),
+('200035', 'Karol', 'Klimko', 'IT', 11),
+('200036', 'Józef', 'Zawadzki', 'IT', 12),
+('200037', 'Małgorzata', 'Wybitna', 'IT', 12);
 
 CREATE TABLE `ksiażki_studentów` (
   `LOGIN` text COLLATE utf8_polish_ci NOT NULL,
@@ -67,11 +67,39 @@ CREATE TABLE `oceny_studentow` (
   `Przedmiot` text COLLATE utf8_polish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
 
+INSERT INTO `oceny_studentow` (`LOGIN`, `Ocena`, `Przedmiot`) VALUES
+('200010', 4, 'Materiałoznastwo'),
+('200015', 3, 'Inżynieria Materiałów'),
+('200002', 5, 'Programowanie w języku C++'),
+('200001', 2, 'Programowanie w języku Python'),
+('200009', 5, 'Procesy łączenia'),
+('200006', 5, 'Fizyka'),
+('200016', 2, 'Prądoznastwo'),
+('200020', 2, 'Programowanie w języku C'),
+('200033', 2, 'Algorytmika'),
+('200035', 2, 'Programowanie w języku C/C++'),
+('200029', 2, 'Algebra'),
+('200027', 2, 'Matematyka Stosowana');
+
 CREATE TABLE `plany_zajec` (
   `Kierunek` text COLLATE utf8_polish_ci NOT NULL,
   `Grupa` int(11) NOT NULL,
   `Tygodniowy Plan Zajęć:` text COLLATE utf8_polish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+
+INSERT INTO `plany_zajec` (`Kierunek`, `Grupa`, `Tygodniowy Plan Zajęć:`) VALUES
+('IWIK', 11, 'Poniedziałek: 5 wykładów\r\nWtorek: 2 wykłady\r\nŚroda: 6 wykładów\r\nCzwartek: 3 wykłady\r\nPiątek: 5 wykładów'),
+('IWIK', 12, 'Poniedziałek: 4 wykładów\r\nWtorek: 3 wykłady\r\nŚroda: 7 wykładów\r\nCzwartek: 5 wykłady\r\nPiątek: 4 wykładów'),
+('ET', 11, 'Poniedziałek: 4 wykładów\r\nWtorek: 2 wykłady\r\nŚroda: 5 wykładów\r\nCzwartek: 3 wykłady\r\nPiątek: 3 wykładów'),
+('ET', 12, 'Poniedziałek: 5 wykładów\r\nWtorek: WOLNE\r\nŚroda: 5 wykładów\r\nCzwartek: 4 wykłady\r\nPiątek: 3 wykładów'),
+('IM', 11, 'Poniedziałek: 5 wykładów\r\nWtorek: 4 wykłady\r\nŚroda: 3 wykładów\r\nCzwartek: 3 wykłady\r\nPiątek: WOLNE'),
+('IM', 12, 'Poniedziałek: 4 wykładów\r\nWtorek: 3 wykłady\r\nŚroda: 4 wykładów\r\nCzwartek: 4 wykłady\r\nPiątek: WOLNE'),
+('IE', 11, 'Poniedziałek: 5 wykładów\r\nWtorek: 6 wykłady\r\nŚroda: 4 wykładów\r\nCzwartek: WOLNE\r\nPiątek: WOLNE'),
+('IE', 12, 'Poniedziałek: 5 wykładów\r\nWtorek: 5 wykłady\r\nŚroda: 5 wykładów\r\nCzwartek: WOLNE\r\nPiątek: WOLNE'),
+('MS', 11, 'Poniedziałek: WOLNE\r\nWtorek: 3 wykłady\r\nŚroda: 3 wykładów\r\nCzwartek: 5 wykłady\r\nPiątek: 5 wykładów'),
+('MS', 12, 'Poniedziałek: WOLNE\r\nWtorek: 4 wykłady\r\nŚroda: 4 wykładów\r\nCzwartek: 4 wykłady\r\nPiątek: 4 wykładów'),
+('IT', 11, 'Poniedziałek: WOLNE\r\nWtorek: 6 wykłady\r\nŚroda: 6 wykładów\r\nCzwartek: 6 wykłady\r\nPiątek: WOLNE'),
+('IT', 12, 'Poniedziałek: WOLNE\r\nWtorek: 7 wykłady\r\nŚroda: 6 wykładów\r\nCzwartek: 5 wykłady\r\nPiątek: WOLNE');
 
 CREATE TABLE `users` (
   `LOGIN` text COLLATE utf8_polish_ci NOT NULL,
