@@ -23,10 +23,10 @@ Podział tabeli 'plany_zajec':
 Kierunek (text) - Grupa (int) - Tygodniowy Plan Zajęć (text)
 
 
-Kierunki studiów:
-1. IWIK - Informatyka w Inżynierii Komputerowej
-2. ET - Elektrotechnika
-3. IM - Inżynieria Mechaniczna
-4. IE - Inżynieria Elektryczna
-5. MS - Matematyka Stosowana
-6. IT - Informatyka Techniczna
+Kierunki studiów (Ilość obecnie studentów):
+1. IWIK - Informatyka w Inżynierii Komputerowej (4)
+2. ET - Elektrotechnika (5)
+3. IM - Inżynieria Mechaniczna (6)
+4. IE - Inżynieria Elektryczna (8)
+5. MS - Matematyka Stosowana (8)
+6. IT - Informatyka Techniczna (6)
