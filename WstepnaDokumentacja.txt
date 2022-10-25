@@ -13,9 +13,6 @@ Dane do zalogowania do Bazy Danych:
 Login: ddeexxiikk
 Hasło: A*pxqKxM3rTzke7v_.*@
 
-Plik SQL wrzucę niedługo do REPO, żebyście mogli wystartować własny server MySQL na localhost, bo nie wiem jak to wygląda w sytuacji,
-Gdybym wam udostępnił moje pliki konfiguracyjne stworzone przez CLion do dodania bazy do projektu
-
 
 Informacje o logowaniu:
 1. Login każdego studenta i pracownika to jego numer składający się z 6 cyfr
