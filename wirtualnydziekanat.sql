@@ -1,6 +1,5 @@
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
-SET time_zone = "+00:00";
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -60,6 +59,32 @@ CREATE TABLE `ksiażki_studentów` (
   `Książka` text COLLATE utf8_polish_ci NOT NULL,
   `Data_Wypożyczenia` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+
+INSERT INTO `ksiażki_studentów` (`LOGIN`, `Książka`, `Data_Wypożyczenia`) VALUES
+('200001', 'Pan Tadeusz 2', '2022-10-11'),
+('200002', 'Firewall, który nie powstrzyma prawdziwego smoka 2', '2022-10-09'),
+('200004', 'Jak zrozumieć system UNIX dla niewtajemniczonych 7', '2022-10-09'),
+('200005', 'Podstawy C++ dla studentów informatyki 10', '2022-10-07'),
+('200007', 'Pan Tadeusz 2', '2022-10-06'),
+('200009', 'Pan Wołodyjowski 10', '2022-10-10'),
+('200010', 'Pan Wołodyjowski 3', '2022-10-10'),
+('200011', 'Wiedźmin 7', '2022-10-14'),
+('200015', 'Wiedźmin 3', '2022-10-17'),
+('200016', 'Wiedźmin 11', '2022-10-20'),
+('200017', 'Podstawy C++ dla studentów informatyki 20', '2022-10-25'),
+('200020', 'Pan Tadeusz 10', '2022-10-03'),
+('200003', 'Firewall, który nie powstrzyma prawdziwego smoka 1', '2022-10-10'),
+('200005', 'Podstawy C++ dla studentów informatyki 23', '2022-10-09'),
+('200006', 'Podstawy C++ dla studentów informatyki 25', '2022-10-07'),
+('200008', 'Wiedźmin 1', '2022-10-05'),
+('200011', 'Pan Wołodyjowski 12', '2022-10-11'),
+('200012', 'Pan Wołodyjowski 4', '2022-10-11'),
+('200013', 'Pan Tadeusz 13', '2022-10-13'),
+('200014', 'Pan Tadeusz 14', '2022-10-17'),
+('200018', 'Pan Tadeusz 15', '2022-10-20'),
+('200025', 'Firewall, który nie powstrzyma prawdziwego smoka 8', '2022-10-24'),
+('200030', 'Jak zrozumieć system UNIX dla niewtajemniczonych 20', '2022-10-03'),
+('200030', 'Podstawy C++ dla studentów informatyki 15', '2022-10-10');
 
 CREATE TABLE `oceny_studentow` (
   `LOGIN` text COLLATE utf8_polish_ci NOT NULL,
