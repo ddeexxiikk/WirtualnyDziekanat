@@ -1,0 +1,32 @@
+Podział bazy WirtualnyDziekanat na tablice:
+1. dane_studentow
+2. ksiazki_studentow
+3. oceny_studentow
+4. users
+
+
+Gdy student odda książkę, to jego rekord jest usuwany z tabeli 'ksiazki_studentow' i nie figuruje w tabeli 'ksiazki_studentow' dopóki nie wypożyczy kolejnej książki.
+
+Podział tabeli 'dane_studentow':
+LOGIN (text) - Imię (text) - Nazwisko (text) - Kierunek (text) - Grupa (int)
+
+Podział tabeli 'ksiazki_studentow':
+LOGIN (text) - Książka (text) - Data_Wypożyczenia (date)
+
+Podział tabeli 'oceny_studentow':
+LOGIN (text) - Ocena (INT) - Przedmiot (text)
+
+Podział tabeli 'users':
+LOGIN (text) - Password (text) - Poziom_Dostepu (int)
+
+Podział tabeli 'plany_zajec':
+Kierunek (text) - Grupa (int) - Tygodniowy Plan Zajęć (text)
+
+
+Kierunki studiów:
+1. IWIK - Informatyka w Inżynierii Komputerowej
+2. ET - Elektrotechnika
+3. IM - Inżynieria Mechaniczna
+4. IE - Inżynieria Elektryczna
+5. MS - Matematyka Stosowana
+6. IT - Informatyka Techniczna
