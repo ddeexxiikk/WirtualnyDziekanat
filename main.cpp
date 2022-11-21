@@ -26,7 +26,11 @@ int main()
 
     }
     else //Jeśli użytkownik więcej niż 3 pomyli się przy logowaniu, program się wyłączy
+    {
+        cout << "Za duzo nieudanych prob logowania, program sie zamknie..." << endl;
+        Sleep(1500);
         exit(0);
+    }
 
     return 0;
 }
