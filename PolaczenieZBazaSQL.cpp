@@ -1,6 +1,8 @@
 #include "PolaczenieZBazaSQL.h"
 #include "Czlowiek.h"
 #include <iostream>
+#include <mysql.h>
+#include <windows.h>
 #include <string>
 
 using namespace std;
@@ -8,15 +10,21 @@ using namespace std;
 /*Funkcja, która nawiązuje połączenie z bazą SQL*/
 bool polaczenie_z_baza_SQL()
 {
-    bool proces;
+    string string_adres_bazy_danych_SQL = "localhost";
+    const char * adres_bazy_danych_SQL = string_adres_bazy_danych_SQL.c_str();
+    string string_login_do_bazy_danych_SQL = "ddeexxiikk";
+    const char * login_do_bazy_danych_SQL = string_login_do_bazy_danych_SQL.c_str();
+    string string_haslo_do_bazy_danych_SQL = "A*pxqKxM3rTzke7v_.*@";
+    const char * haslo_do_bazy_danych_SQL = string_haslo_do_bazy_danych_SQL.c_str();
+    string string_nazwa_bazy_danych_SQL = "wirtualnydziekanat";
+    const char * nazwa_bazy_danych_SQL = string_nazwa_bazy_danych_SQL.c_str();
 
-    const string login_do_bazy_danych_SQL = "ddeexxiikk";
-    const string haslo_do_bazy_danych_SQL = "A*pxqKxM3rTzke7v_.*@";
+    MYSQL *polaczenie;
+    polaczenie = mysql_init(0);
+    polaczenie = mysql_real_connect(polaczenie, adres_bazy_danych_SQL , login_do_bazy_danych_SQL, haslo_do_bazy_danych_SQL, nazwa_bazy_danych_SQL, 3306, NULL, 0);
 
-    //Proces Łączenia z Bazą SQL
-    //Trzeba go zrobić
 
-    if(proces) // Jeśli się udało
+    if(polaczenie) // Jeśli się udało
         return true;
     else //Jeśli się nie udało
         return false;
