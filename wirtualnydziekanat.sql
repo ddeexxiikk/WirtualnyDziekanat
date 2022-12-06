@@ -1,11 +1,29 @@
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
+SET time_zone = "+00:00";
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
+
+CREATE TABLE `dane_pracownikow` (
+  `LOGIN` text COLLATE utf8_polish_ci NOT NULL,
+  `Imie` text COLLATE utf8_polish_ci NOT NULL,
+  `Nazwisko` text COLLATE utf8_polish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+
+INSERT INTO `dane_pracownikow` (`LOGIN`, `Imie`, `Nazwisko`) VALUES
+('100001', 'Barbara', 'Nowacka'),
+('100002', 'Kamil', 'Nowak'),
+('100003', 'Marzena', 'Komarnicka'),
+('100004', 'Joanna', 'Klacz'),
+('100005', 'Ola', 'Bibel'),
+('100006', 'Olga', 'Mit'),
+('100007', 'Wojciech', 'Lewandowski'),
+('100008', 'Kamil', 'Grabara'),
+('100009', 'Oliwia', 'Nowakiewicz');
 
 CREATE TABLE `dane_studentow` (
   `LOGIN` text COLLATE utf8_polish_ci NOT NULL,
@@ -181,6 +199,9 @@ INSERT INTO `users` (`LOGIN`, `Password`, `Poziom_Dostepu`) VALUES
 ('200036', '36PassWORD_35', 1),
 ('200037', '37PassWORD_36', 1);
 
+
+ALTER TABLE `dane_pracownikow`
+  ADD PRIMARY KEY (`LOGIN`(100));
 
 ALTER TABLE `dane_studentow`
   ADD PRIMARY KEY (`LOGIN`(100));
