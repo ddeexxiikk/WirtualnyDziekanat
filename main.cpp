@@ -1,4 +1,4 @@
-#include "PanelLogowania.h"
+#include "Panel.h"
 #include <windows.h>
 #include <iostream>
 #include <string>
@@ -21,14 +21,15 @@ int main()
         Sleep(1000);
 
         //Od tego momentu możemy przejść do profilu Studenta/Pracownika
-        //Mozecie tutaj wrzucic funkcje profilow
+        //Mozecie tutaj wrzucic funkcje klas Studenta i Pracownika
         //W tym momencie jestem w stanie tylko sprawdzic czy dziala logowanie na sztywne dane
 
     }
-    else //Jeśli użytkownik więcej niż 3 pomyli się przy logowaniu, program się wyłączy
+    else //Jeśli użytkownik więcej niż 3 pomyli się przy logowaniu lub nie będzie połączenia z bazą
+    // program się wyłączy
     {
-        cout << "Za duzo nieudanych prob logowania, program sie zamknie..." << endl;
-        Sleep(1500);
+        cout << "Blad logowania, program sie wyłączy" << endl;
+        Sleep(2000);
         exit(0);
     }
 

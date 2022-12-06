@@ -1,32 +1,27 @@
 #include "PolaczenieZBazaSQL.h"
-#include "Czlowiek.h"
 #include <iostream>
-#include <mysql.h>
-#include <windows.h>
 #include <string>
+#include <fstream>
 
 using namespace std;
 
 /*Funkcja, która nawiązuje połączenie z bazą SQL*/
 bool polaczenie_z_baza_SQL()
 {
-    string string_adres_bazy_danych_SQL = "localhost";
-    const char * adres_bazy_danych_SQL = string_adres_bazy_danych_SQL.c_str();
-    string string_login_do_bazy_danych_SQL = "ddeexxiikk";
-    const char * login_do_bazy_danych_SQL = string_login_do_bazy_danych_SQL.c_str();
-    string string_haslo_do_bazy_danych_SQL = "A*pxqKxM3rTzke7v_.*@";
-    const char * haslo_do_bazy_danych_SQL = string_haslo_do_bazy_danych_SQL.c_str();
-    string string_nazwa_bazy_danych_SQL = "wirtualnydziekanat";
-    const char * nazwa_bazy_danych_SQL = string_nazwa_bazy_danych_SQL.c_str();
+    //Wywołuje skrypt Pythona, który nawiąże połączenie z bazą SQL
+    system("SprawdzPolaczenieZBaza.py");
 
-    MYSQL *polaczenie;
-    polaczenie = mysql_init(0);
-    polaczenie = mysql_real_connect(polaczenie, adres_bazy_danych_SQL , login_do_bazy_danych_SQL, haslo_do_bazy_danych_SQL, nazwa_bazy_danych_SQL, 3306, NULL, 0);
+    //Odczytuje plik, w którym skrypt Pythona zapisuje informację o tym, czy połączenie z bazą SQL się powiodło
+    fstream plik;
+    plik.open("wynik.txt", ios::in);
+    string status;
+    plik >> status;
+    plik.close();
 
-
-    if(polaczenie) // Jeśli się udało
+    //Jeśli połączenie się powiodło, zwraca TRUE, w przeciwnym wypadku zwraca FALSE
+    if(status == "True")
         return true;
-    else //Jeśli się nie udało
+    else
         return false;
 };
 
