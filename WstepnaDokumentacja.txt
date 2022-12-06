@@ -8,6 +8,7 @@ W moich funkcjach zmienne o nazwie 'anazwazmiennej' oznaczane są jako zmienne, 
 
 Dodałem komentarze, do części funkcji, ale nie wszystkich. Ostatecznie wszystkie funkcję, przerzuce do klasy Student i Pracownik, gdy je stworzę.
 
+Niestety nie mogę połączyć się z bazą przez C++, więc zrobie połączenie Pythonem i przez zapis do pliku po szyfrowaniu jakimś algorytmem będę przesyłał dane w obie strony
 
 Dane do zalogowania do Bazy Danych:
 Login: ddeexxiikk
