@@ -203,14 +203,13 @@ void zobaczenie_ocen_studenta_pracownik()
 
 bool dodanie_oceny()
 {
-    bool proces;
-    //Proces Dodania Oceny Studenta
-    //Trzeba go zrobić
 
-    if(proces) // Jeśli się udało
+    /*
+    if() // Jeśli się udało
         return true;
     else //Jeśli się nie udało
         return false;
+        */
 };
 
 void sprawdzenie_grupy_student()
