@@ -5,12 +5,13 @@
 using namespace std;
 
 class Czlowiek {
-    private:
+    protected:
         string login, imie, nazwisko;
         int poziom_dostepu;
 
     public:
-        Czlowiek(string * alogin, string * aimie, string * anazwisko, int * apoziom_dostepu);
+        Czlowiek(string alogin, string aimie, string anazwisko);
+        zmien_haslo(string nowe_haslo);
 };
 
 #endif

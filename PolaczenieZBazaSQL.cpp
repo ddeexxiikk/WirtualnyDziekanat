@@ -5,6 +5,26 @@
 
 using namespace std;
 
+/*Funkcja, która nawiązuje połączenie z bazą SQL*/
+bool polaczenie_z_baza_SQL()
+{
+    //Wywołuje skrypt Pythona, który nawiąże połączenie z bazą SQL
+    //system("SprawdzPolaczenieZBaza.py");
+
+    //Odczytuje plik, w którym skrypt Pythona zapisuje informację o tym, czy połączenie z bazą SQL się powiodło
+    fstream plik;
+    plik.open("wynik.txt", ios::in);
+    string status;
+    plik >> status;
+    plik.close();
+
+    //Jeśli połączenie się powiodło, zwraca TRUE, w przeciwnym wypadku zwraca FALSE
+    if(status == "True")
+        return true;
+    else
+        return false;
+};
+
 /* Funkcja poprawny_login_z_bazy_SQL wyciąga poprawny login z bazy SQL */
 string poprawny_login_z_bazy_SQL()
 {
@@ -12,9 +32,9 @@ string poprawny_login_z_bazy_SQL()
     //Proces Pobierania Loginu z Bazy SQL
     //Trzeba go zrobić
 
+    bool proces = polaczenie_z_baza_SQL();
 
-/*
-    if(  ) //Jeśli się udało
+    if(proces) //Jeśli się udało
     {
         poprawny_login = "Login";
         return poprawny_login;
@@ -24,7 +44,6 @@ string poprawny_login_z_bazy_SQL()
         poprawny_login = nullptr;
         return poprawny_login;
     }
-    */
 };
 
 /* Funkcja poprawne_haslo_z_bazy_SQL wyciąga poprawne hasło z bazy SQL */
@@ -34,8 +53,9 @@ string poprawne_haslo_z_bazy_SQL()
     //Proces Pobierania Hasła z Bazy SQL
     //Trzeba go zrobić
 
-    /*
-    if(   ) //Jeśli się udało
+    bool proces = polaczenie_z_baza_SQL();
+
+    if(proces) //Jeśli się udało
     {
         poprawne_haslo = "Login";
         return poprawne_haslo;
@@ -45,7 +65,6 @@ string poprawne_haslo_z_bazy_SQL()
         poprawne_haslo = nullptr;
         return poprawne_haslo;
     }
-     */
 };
 
 /* Funkcja zmiana_hasla_przez_studenta zmienia hasło studenta, kiedy zostanie wywołana przez studenta w panelu */
@@ -60,9 +79,11 @@ bool zmiana_hasla_przez_studenta()
     cout << "Podaj nowe haslo: ";
     cin >> haslo_nowe;
 
+    bool proces;
+    //Proces Zmiany obecnego hasła na nowe hasło przez Studenta
+    //Trzeba go zrobić
 
-    /*
-    if(   ) // Jeśli się udało
+    if(proces) // Jeśli się udało
     {
         cout << "Haslo zostalo zmienione" << endl;
         return true;
@@ -72,7 +93,6 @@ bool zmiana_hasla_przez_studenta()
         cout << "Haslo nie zostalo zmienione" << endl;
         return false;
     }
-     */
 };
 
 /* Funkcja zmiana_hasla_przez_pracownika zmienia hasło pracownika, kiedy zostanie wywołana przez pracownika w panelu */
@@ -122,8 +142,12 @@ string pokaz_numer_studenta_pracownik()
     cout << "Podaj nazwisko studenta: ";
     cin >> nazwisko;
 
-    /*
-    if(   ) //Jeśli się udało
+    string numer_studenta;
+    bool proces;
+    //Proces Pobierania Numeru Studenta z Bazy SQL
+    //Trzeba go zrobić
+
+    if(proces) //Jeśli się udało
     {
         //Zrobić wyciagniecie numeru studenta z Bazy SQL i zapisanie go do zmiennej NumerStudenta
 
@@ -134,7 +158,7 @@ string pokaz_numer_studenta_pracownik()
     {
         numer_studenta = nullptr;
         return numer_studenta;
-    }*/
+    }
 };
 
 bool dodanie_studenta()
@@ -150,8 +174,11 @@ bool dodanie_studenta()
     cout << "Podaj numer studenta: ";
     cin >> numer_studenta;
 
-    /*
-    if(   )// Jeśli się udało
+    bool proces;
+    //Proces Dodania Studenta do Bazy SQL
+    //Trzeba go zrobić
+
+    if(proces)// Jeśli się udało
     {
         cout << "Student zostal dodany." << endl;
         cout << "Poinformuj studenta o koniecznosci zmiana hasla." << endl;
@@ -161,7 +188,7 @@ bool dodanie_studenta()
     {
         cout << "Student nie zostal dodany." << endl;
         return false;
-    }*/
+    }
 };
 
 bool usuniecie_studenta()
@@ -203,13 +230,14 @@ void zobaczenie_ocen_studenta_pracownik()
 
 bool dodanie_oceny()
 {
+    bool proces;
+    //Proces Dodania Oceny Studenta
+    //Trzeba go zrobić
 
-    /*
-    if() // Jeśli się udało
+    if(proces) // Jeśli się udało
         return true;
     else //Jeśli się nie udało
         return false;
-        */
 };
 
 void sprawdzenie_grupy_student()
