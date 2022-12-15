@@ -5,11 +5,16 @@
 using namespace std;
 
 /*  Funkcja wyświetla panel logowania, pobiera od użytkownika login i hasło, a następnie
-    wywołuje funkcję CzyPoprawnyUzytkownik() i sprawdza, wartość BOOL, jaką ona zwróci*/
-bool PanelLogowania(string * alogin_uzytkownika);
+    wywołuje funkcję CzyPoprawnyUzytkownik() i sprawdza, wartość jaką ona zwróci
+    w zależności od tego tworzy obiekt Student lub Pracownik w obiekcie przekazanym w argumencie
+    oraz zwraca int będący poziomem dostępu użytkownika
+*/
+int PanelLogowania(void *&obiekt);
 
 /*  Funkcja łączy się z bazą danych i sprawdza login i hasło wprowadzone przez użytkownika,
-    porównuje, je do danych z bazy i zwraca TRUE jeśli dane są poprawne, w przeciwnym wypadku zwraca FALSE*/
-bool CzyPoprawnyUzytkownik(string alogin, string ahaslo);
+    porównuje, znajduje poprawne dane logowania w pliku tekstowym i porówuje z podnymi.
+    Zwraca poziom dostępu użytkownika lub 0 jeżeli dane są niepoprawne
+*/
+int CzyPoprawnyUzytkownik(string alogin, string ahaslo);
 
 #endif

@@ -2,6 +2,7 @@
 #include <fstream>
 #include <iostream>
 #include <bits/stdc++.h>
+#include <sstream>
 
 using namespace std;
 
@@ -15,16 +16,24 @@ Plan_zajec::Plan_zajec(string nazwa_pliku, string akierunek, string agrupa)
     ifstream plan;
     plan.open(nazwa_pliku.c_str());
     string temp_kierunek, temp_grupa, temp_tytul, temp_sala, temp_prowadzacy;
-    int temp_dzien, temp_godz, temp_min, temp_czas;
+    string temp_dzien, temp_godz, temp_min, temp_czas;
     if(plan.good())
     {
-        while(plan>>temp_kierunek>>temp_grupa>>temp_tytul>>temp_sala>>temp_prowadzacy>>temp_godz>>temp_min>>temp_czas)
+        string line;
+        while(getline(plan, line))
         {
-            if(temp_kierunek==akierunek&&temp_grupa==agrupa)
-            {
-                lekcja nowa(temp_tytul, temp_sala, temp_prowadzacy, temp_dzien, temp_godz, temp_min, temp_czas);
-                zajecia.push_back(nowa);
-            }
+            istringstream csvStream(line);
+            getline(csvStream, temp_kierunek, ';');
+            getline(csvStream, temp_grupa, ';');
+            getline(csvStream, temp_tytul, ';');
+            getline(csvStream, temp_sala, ';');
+            getline(csvStream, temp_prowadzacy, ';');
+            getline(csvStream, temp_godz, ';');
+            getline(csvStream, temp_min, ';');
+            getline(csvStream, temp_czas, ';');
+            getline(csvStream, temp_dzien, ';');
+            lekcja nowa(temp_tytul, temp_sala, temp_prowadzacy, stoi(temp_dzien), stoi(temp_godz), stoi(temp_min), stoi(temp_czas));
+            zajecia.push_back(nowa);
         }
     }
     plan.close();

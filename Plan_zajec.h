@@ -9,15 +9,15 @@ class Plan_zajec
 {
     public:
         /*
-            lekcja - wewnêtrzna klasa reprezentuj¹ca pojedyncze zajêcia w tygodniu
-            display() - wyœwietla dane o lekcjach
+            lekcja - wewnÃªtrzna klasa reprezentujÂ¹ca pojedyncze zajÃªcia w tygodniu
+            display() - wyÅ“wietla dane o lekcjach
         */
         Plan_zajec(string nazwa_pliku, string kierunek, string agrupa);
         class lekcja
         {
             public:
             string tytul, sala, prowadzacy;
-            int dzien; //dzieñ tygodnia od 1 - poniedzia³ek do 7 - niedziela
+            int dzien; //dzieÃ± tygodnia od 1 - poniedziaÂ³ek do 7 - niedziela
             int godzina_rozpoczecia, minuta_rozpoczecia;
             int czas_trwania; //w minutach
             lekcja(string atytul, string asala, string aprowadzacy, int adzien, int a_godz, int a_min, int a_czas)
@@ -30,12 +30,17 @@ class Plan_zajec
                 minuta_rozpoczecia=a_min;
                 czas_trwania=a_czas;
             }
+            string display_time(int czas)
+            {
+                return (czas<10?"0":"")+to_string(czas);
+            }
             string display()
             {
+                const string dni_tygodnia[7] = {"PoniedziaÅ‚ek", "Wtorek", "Åšroda", "Czwartek", "PiÄ…tek", "Sobota", "Niedziela" };
                 int minuta_zakonczenia=(minuta_rozpoczecia+czas_trwania)%60;
                 int godzina_zakonczenia=godzina_rozpoczecia+(minuta_rozpoczecia+czas_trwania)/60;
-                return tytul+" Sala: "+sala+" Prowadzacy: "+prowadzacy+" Godzina: "+to_string(godzina_rozpoczecia)+":"
-                +to_string(minuta_rozpoczecia)+"-"+to_string(godzina_zakonczenia)+":"+to_string(minuta_zakonczenia);
+                return tytul+" Sala: "+sala+" Prowadzacy: "+prowadzacy+" Dzien: "+dni_tygodnia[dzien-1]+" Godzina: "+display_time(godzina_rozpoczecia)+":"
+                +display_time(minuta_rozpoczecia)+"-"+display_time(godzina_zakonczenia)+":"+display_time(minuta_zakonczenia);
             }
         };
         void display();
