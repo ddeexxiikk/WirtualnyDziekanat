@@ -5,7 +5,6 @@
 #include <string>
 #include "Student.h"
 #include "Pracownik.h"
-
 #include "Plan_zajec.h"
 
 using namespace std;

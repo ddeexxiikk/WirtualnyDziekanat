@@ -1,7 +1,6 @@
 #ifndef OCENY_H
 #define OCENY_H
 
-
 class oceny
 {
     public:
@@ -10,7 +9,7 @@ class oceny
         virtual bool dodanie_oceny(int ocena, int semestr)=0;
 
     protected:
-        int *oceny_koncowe; //0 - znaczy brak oceny, pozosta≥e oceny tak jak normalnie na studiach
+        int *oceny_koncowe; //0 - znaczy brak oceny, pozosta≈Çe oceny tak jak normalnie na studiach
     private:
 };
 
