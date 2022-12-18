@@ -9,14 +9,15 @@ using namespace std;
 Plan_zajec::Plan_zajec(string nazwa_pliku, string akierunek, string agrupa)
 {
     /*
-        Ten konstruktor dostaje nazwe pliku z danymi i szuka wszystkich zajêæ dotycz¹cych danej grupy na danym kierunku
-        Przy znalezieniu takich zajêæ tworzy obiekt klasy wewnêtrznej lekcja i dodaje j¹ do wektora przecowuj¹cego plan zajêæ
+        Ten konstruktor dostaje nazwe pliku z danymi i szuka wszystkich zajęć dotyczących danej grupy na danym kierunku
+        Przy znalezieniu takich zajęć tworzy obiekt klasy wewnętrznej lekcja i dodaje je do wektora przecowującego plan zajęć
         Pod koniec sortuje zajęcia tak żeby były od poniedziałku do piątku po kolei
     */
     ifstream plan;
     plan.open(nazwa_pliku.c_str());
     string temp_kierunek, temp_grupa, temp_tytul, temp_sala, temp_prowadzacy;
     string temp_dzien, temp_godz, temp_min, temp_czas;
+
     if(plan.good())
     {
         string line;
@@ -36,7 +37,9 @@ Plan_zajec::Plan_zajec(string nazwa_pliku, string akierunek, string agrupa)
             zajecia.push_back(nowa);
         }
     }
+
     plan.close();
+
     sort(zajecia.begin(), zajecia.end(), [ ](const lekcja &zajecia1, const lekcja &zajecia2)
         {
             int czas1=(24*zajecia1.dzien+zajecia1.godzina_rozpoczecia)*60+zajecia1.minuta_rozpoczecia;

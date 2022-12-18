@@ -4,7 +4,7 @@
 class oceny
 {
     public:
-        oceny(int ile_semstrow);
+        oceny(int ile_semestrow);
         ~oceny();
         virtual bool dodanie_oceny(int ocena, int semestr)=0;
 

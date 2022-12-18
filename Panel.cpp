@@ -18,21 +18,26 @@ int PanelLogowania(void *&obiekt)
     static int counter=0;
     if(counter==3) exit(1);
     string login, password;
+
     cout<<"Podaj login: ";
     cin>>login;
     cout<<"Podaj haslo: ";
     cin>>password;
+
     int result=CzyPoprawnyUzytkownik(login, password);
+
     if(result!=0)
     {
         if(result==1) obiekt = new Student("Student data.txt", login);
         if(result==2) obiekt = new Pracownik("Worker data.txt", login);
         return result;
     }
+
     counter++;
     system("cls");
     Sleep(500);
     cout<<"Niepoprawne haslo lub login, sprobuj ponownie"<<endl;
+
     PanelLogowania(obiekt);
 }
 

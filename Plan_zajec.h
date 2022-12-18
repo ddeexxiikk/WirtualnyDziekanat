@@ -9,10 +9,11 @@ class Plan_zajec
 {
     public:
         /*
-            lekcja - wewnêtrzna klasa reprezentuj¹ca pojedyncze zajêcia w tygodniu
-            display() - wyœwietla dane o lekcjach
+            lekcja - wewnêtrzna klasa reprezentująca pojedyncze zajęcia w tygodniu
+            display() - wyświetla dane o lekcjach
         */
         Plan_zajec(string nazwa_pliku, string kierunek, string agrupa);
+
         class lekcja
         {
             public:
@@ -20,6 +21,7 @@ class Plan_zajec
             int dzien; //dzieñ tygodnia od 1 - poniedzia³ek do 7 - niedziela
             int godzina_rozpoczecia, minuta_rozpoczecia;
             int czas_trwania; //w minutach
+
             lekcja(string atytul, string asala, string aprowadzacy, int adzien, int a_godz, int a_min, int a_czas)
             {
                 tytul=atytul;
@@ -30,10 +32,12 @@ class Plan_zajec
                 minuta_rozpoczecia=a_min;
                 czas_trwania=a_czas;
             }
+
             string display_time(int czas)
             {
                 return (czas<10?"0":"")+to_string(czas);
             }
+
             string display()
             {
                 const string dni_tygodnia[7] = {"Poniedziałek", "Wtorek", "Środa", "Czwartek", "Piątek", "Sobota", "Niedziela" };
@@ -44,8 +48,10 @@ class Plan_zajec
             }
         };
         void display();
+
     protected:
         vector<lekcja> zajecia;
+
     private:
 };
 
