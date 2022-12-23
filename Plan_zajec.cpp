@@ -6,7 +6,7 @@
 
 using namespace std;
 
-Plan_zajec::Plan_zajec(string nazwa_pliku, string akierunek, string agrupa)
+void Plan_zajec::import(string nazwa_pliku, string akierunek, string agrupa)
 {
     /*
         Ten konstruktor dostaje nazwe pliku z danymi i szuka wszystkich zajêæ dotycz¹cych danej grupy na danym kierunku

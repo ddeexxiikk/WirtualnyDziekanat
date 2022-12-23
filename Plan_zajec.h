@@ -12,7 +12,8 @@ class Plan_zajec
             lekcja - wewnêtrzna klasa reprezentuj¹ca pojedyncze zajêcia w tygodniu
             display() - wyœwietla dane o lekcjach
         */
-        Plan_zajec(string nazwa_pliku, string kierunek, string agrupa);
+        Plan_zajec() = default;
+        void import(string nazwa_pliku, string kierunek, string agrupa);
         class lekcja
         {
             public:

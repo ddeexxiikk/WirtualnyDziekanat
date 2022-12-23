@@ -2,7 +2,6 @@
 #include <windows.h>
 #include <iostream>
 #include <fstream>
-#include <string>
 #include "Student.h"
 #include "Pracownik.h"
 
@@ -16,8 +15,13 @@ int main()
     cout << "Zaloguj sie aby przejsc dalej..." << endl;
     void *obiekt;
     int poziom_dostepu=PanelLogowania(obiekt);
-    if(poziom_dostepu==1) ((Student*)obiekt)->display();
-    if(poziom_dostepu==2) ((Pracownik*)obiekt)->display();
+    int opcja;
+    bool result;
+    while(true)
+    {
+        opcja=wyswietlanie_menu(poziom_dostepu);
+        result=obsluz_opcje(opcja, obiekt);
+    }
     delete obiekt;
     return 0;
 }

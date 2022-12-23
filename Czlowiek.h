@@ -11,7 +11,7 @@ class Czlowiek {
 
     public:
         Czlowiek(string alogin, string aimie, string anazwisko);
-        zmien_haslo(string nowe_haslo);
+        void zmien_haslo(string file_name, string nowe_haslo);
 };
 
 #endif

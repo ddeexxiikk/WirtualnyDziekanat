@@ -10,7 +10,6 @@ Student::Student(string alogin, string aimie, string anazwisko, string akierunek
 }
 Student::Student(string file_name, string alogin):Czlowiek("", "", "")
 {
-    cout<<"Stworzony student"<<imie<<" "<<nazwisko<<endl;
     ifstream data;
     data.open(file_name.c_str());
     string temp_login, temp_imie, temp_nazwisko, temp_kierunek, temp_grupa;
@@ -28,6 +27,8 @@ Student::Student(string file_name, string alogin):Czlowiek("", "", "")
         }
     }
     data.close();
+    plan.import("Plan zajec test.txt", kierunek, grupa);
+    //plan("Plan zajec test.txt", kierunek, grupa);
 }
 
 bool Student::oceny_studenta::dodanie_oceny(int ocena, int semestr)
@@ -38,4 +39,14 @@ bool Student::oceny_studenta::dodanie_oceny(int ocena, int semestr)
 void Student::display()
 {
     cout<<"Student: "<<imie<<" "<<nazwisko<<endl;
+}
+
+string Student::sprawdzenie_grupy()
+{
+    return grupa;
+}
+
+void Student::wyswietl_plan()
+{
+    plan.display();
 }

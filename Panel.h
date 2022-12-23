@@ -17,4 +17,10 @@ int PanelLogowania(void *&obiekt);
 */
 int CzyPoprawnyUzytkownik(string alogin, string ahaslo);
 
+bool obsluz_opcje(int opcja, void *&obiekt);
+
+int wyswietlanie_menu(int poziom_dostepu);
+
+int wybor_opcji(int min_przedzialu, int max_przedzialu);
+
 #endif

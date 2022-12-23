@@ -2,6 +2,7 @@
 #define STUDENT_H
 #include "Czlowiek.h"
 #include "oceny.h"
+#include "Plan_zajec.h"
 #include <map>
 
 class Student : public Czlowiek
@@ -13,6 +14,8 @@ class Student : public Czlowiek
             bool dodanie_oceny(int ocena, int semestr);
         };
         void display();
+        string sprawdzenie_grupy();
+        void wyswietl_plan();
 
     protected:
 
@@ -20,7 +23,7 @@ class Student : public Czlowiek
         string kierunek, grupa;
         int semestr;
         map<string, oceny_studenta>przedmioty;
-
+        Plan_zajec plan;
 };
 
 #endif // STUDENT_H

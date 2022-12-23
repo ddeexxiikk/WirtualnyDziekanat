@@ -1,12 +1,31 @@
 #include "Czlowiek.h"
-#include <string>
+#include <fstream>
 #include <iostream>
 
 using namespace std;
 
-    Czlowiek::Czlowiek(string alogin, string aimie, string anazwisko)
+Czlowiek::Czlowiek(string alogin, string aimie, string anazwisko)
+{
+    imie = aimie;
+    nazwisko = anazwisko;
+    login = alogin;
+};
+
+void Czlowiek::zmien_haslo(string file_name, string nowe_haslo)
+{
+    ifstream dane;
+    ofstream temp;
+    dane.open(file_name.c_str());
+    temp.open("temp.txt");
+    string temp_login, temp_password;
+    int access_lvl;
+    while(dane>>temp_login>>temp_password>>access_lvl)
     {
-        imie = aimie;
-        nazwisko = anazwisko;
-        login = alogin;
-    };
+        if(temp_login==login) temp_password=nowe_haslo;
+        temp<<temp_login<<" "<<temp_password<<" "<<access_lvl<<endl;
+    }
+    dane.close();
+    temp.close();
+    remove(file_name.c_str());
+    rename("temp.txt", file_name.c_str());
+}
