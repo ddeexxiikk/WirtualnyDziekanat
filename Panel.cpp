@@ -156,7 +156,19 @@ bool obsluz_opcje(int opcja, void *&obiekt)
         }
         case 12:
         {
-            cout<<"Wybrano opcje 12"<<endl;
+            //cout<<"Wybrano opcje 12"<<endl;
+            string login, przedmiot;
+            int semestr;
+            double ocena;
+            cout << "Podaj login studenta:";
+            cin >> login;
+            cout << "Podaj przdedmiot:";
+            cin >> przedmiot;
+            cout << "Podaj semestr:";
+            cin >> semestr;
+            cout << "Podaj ocene:";
+            cin >> ocena;
+            ((Pracownik*)obiekt)->dodaj_ocene(login, przedmiot, semestr, ocena);
             break;
         }
         case 13:
@@ -178,17 +190,39 @@ bool obsluz_opcje(int opcja, void *&obiekt)
         }
         case 14:
         {
-            cout<<"Wybrano opcje 14"<<endl;
+            //cout<<"Wybrano opcje 14"<<endl;
+            string kierunek, grupa;
+            cout << "Podaj kierunek: ";
+            cin >> kierunek;
+            cout << "Podaj grupe: ";
+            cin >> grupa;
+            ((Pracownik*)obiekt)->sprawdz_plan_zajec_studenta(kierunek, grupa);
             break;
         }
         case 15:
         {
-            cout<<"Wybrano opcje 15"<<endl;
+            //cout<<"Wybrano opcje 15"<<endl;
+            string login, tytul;
+            cout << "Podaj login studenta: ";
+            cin >> login;
+            cout << "Podaj tytul ksiazki do wypozyczenia: ";
+            getline(cin >> ws, tytul);
+
+            int rezultat = ((Pracownik*)obiekt)->dodaj_ksiazke_studentowi(login, tytul);
+            if(rezultat == -1) cout << "Blad w otwieraniu pliku" << endl;
+            if(rezultat == 1) cout << "Brak ksiazki na stanie biblioteki" << endl;
             break;
         }
         case 16:
         {
-            cout<<"Wybrano opcje 16"<<endl;
+            //cout<<"Wybrano opcje 16"<<endl;
+            string login, tytul;
+            cout << "Podaj login studenta: ";
+            cin >> login;
+            cout << "Podaj tytul ksiazki do usuniecia: ";
+            getline(cin >> ws, tytul);
+
+            ((Pracownik*)obiekt)->usun_ksiazke_studentowi(login, tytul);
             break;
         }
         case 17:
@@ -227,7 +261,15 @@ bool obsluz_opcje(int opcja, void *&obiekt)
         }
         case 20:
         {
-            cout<<"Wybrano opcje 20"<<endl;
+            //cout<<"Wybrano opcje 20"<<endl;
+            string login, imie, nazwisko;
+            cout << "Podaj login studenta, ktorego chcesz usunac: ";
+            cin >> login;
+            cout << "Podaj imie studenta, ktorego chcesz usunac: ";
+            cin >> imie;
+            cout << "Podaj nazwisko studenta, ktorego chcesz usunac: ";
+            cin >> nazwisko;
+            ((Pracownik*)obiekt)->usun_studenta(login, imie, nazwisko);
             break;
         }
         default:

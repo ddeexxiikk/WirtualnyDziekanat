@@ -4,6 +4,7 @@
 #include "oceny.h"
 #include "Plan_zajec.h"
 #include <map>
+#include <utility>
 
 class Student : public Czlowiek
 {

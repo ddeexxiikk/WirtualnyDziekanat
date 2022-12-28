@@ -1,2 +1,3 @@
 10001;Matematyka;2;3
 10002;Matematyka;1;4
+10005;Fizyka;3;3
