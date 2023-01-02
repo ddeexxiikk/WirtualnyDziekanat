@@ -37,7 +37,7 @@ class Plan_zajec
             }
             string display()
             {
-                const string dni_tygodnia[7] = {"Poniedziałek", "Wtorek", "Środa", "Czwartek", "Piątek", "Sobota", "Niedziela" };
+                const string dni_tygodnia[7] = {"Poniedzialek", "Wtorek", "Sroda", "Czwartek", "Piatek", "Sobota", "Niedziela" };
                 int minuta_zakonczenia=(minuta_rozpoczecia+czas_trwania)%60;
                 int godzina_zakonczenia=godzina_rozpoczecia+(minuta_rozpoczecia+czas_trwania)/60;
                 return tytul+" Sala: "+sala+" Prowadzacy: "+prowadzacy+" Dzien: "+dni_tygodnia[dzien-1]+" Godzina: "+display_time(godzina_rozpoczecia)+":"

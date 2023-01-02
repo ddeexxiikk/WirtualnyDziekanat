@@ -27,7 +27,7 @@ Student::Student(string file_name, string alogin):Czlowiek("", "", "")
         }
     }
     data.close();
-    plan.import("Plan zajec test.txt", kierunek, grupa);
+    plan.import("Plan zajec.txt", kierunek, grupa);
     //plan("Plan zajec test.txt", kierunek, grupa);
 }
 

@@ -154,7 +154,7 @@ bool Pracownik::usun_studenta(string alogin, string aimie, string anazwisko)
         {
             tempnazwisko = line.substr(druga_spacja, line.find(' '));
         }
-    
+
         if(stoi(alogin) != stoi(templogin) && aimie != tempimie && anazwisko != tempnazwisko)
         {
             plik += line + '\n';
@@ -193,6 +193,7 @@ bool Pracownik::usun_studenta(string alogin, string aimie, string anazwisko)
 
         tempdostep = line.at(line.size() - 1);
 
+        cout << alogin << " " << templogin << endl;
         if(stoi(alogin) != stoi(templogin) || stoi(tempdostep) == 2)
         {   
             plik += line + '\n';
@@ -365,5 +366,19 @@ bool Pracownik::usun_ksiazke_studentowi(string alogin, string atytul)
 
     lista_ksiazek_zapis << plik;
     lista_ksiazek_zapis.close();
+    return true;
+}
+
+bool Pracownik::dodaj_plan_zajec(string kierunek, string grupa, Plan_zajec::lekcja lekcja)
+{
+    ofstream plik;
+    plik.open("Plan zajec.txt", ios::app);
+    if(!plik.good())
+    {
+        return false;
+    }
+    plik << kierunek << ";" << grupa << ";" << lekcja.tytul << ";" << lekcja.sala << ";" << lekcja.prowadzacy << ";" << lekcja.dzien 
+    << ";" << lekcja.godzina_rozpoczecia << ";" << lekcja.minuta_rozpoczecia << ";" << lekcja.czas_trwania << endl;
+    plik.close();
     return true;
 }

@@ -2,6 +2,7 @@
 #define PRACOWNIK_H
 #include "Czlowiek.h"
 #include "oceny.h"
+#include "Plan_zajec.h"
 
 class Pracownik:public Czlowiek
 {
@@ -19,6 +20,7 @@ class Pracownik:public Czlowiek
         bool sprawdz_plan_zajec_studenta(string akierunek, string agrupa);
         int dodaj_ksiazke_studentowi(string alogin, string atytul);
         bool usun_ksiazke_studentowi(string alogin, string atytul);
+        bool dodaj_plan_zajec(string kierunek, string grupa, Plan_zajec::lekcja lekcja);
         void display();
     protected:
 

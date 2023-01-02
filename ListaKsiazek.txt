@@ -1,4 +1,4 @@
-Pan Tadeusz 9
+Pan Tadeusz 7
 Wiedzmin 20
 Pan Wolodyjowski 30
 Podstawy C++ dla studentow informatyki 99
