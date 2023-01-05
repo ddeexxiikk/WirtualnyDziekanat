@@ -284,21 +284,55 @@ bool obsluz_opcje(int opcja, void *&obiekt, Log& log)
             case 17:
             {
                 //cout<<"Wybrano opcje 17"<<endl;
-                string kierunek, grupa, tytul, sala, prowadzacy;
+                string kierunek, grupa, tytul, sala, prowadzacy, dzien_str;
                 int dzien, godzina, min, czas;
 
                 cout << "Podaj nazwe kierunku: ";
-                cin >> kierunek;
+                getline(cin >> ws, kierunek);
                 cout << "Podaj nazwe grupy: ";
-                cin >> grupa;
+                getline(cin >> ws, grupa);
                 cout << "Podaj nazwe przedmiotu: ";
-                cin >> tytul;
+                getline(cin >> ws, tytul);
                 cout << "Podaj nazwe sali: ";
-                cin >> sala;
+                getline(cin >> ws, sala);
                 cout << "Podaj prowadzacego: ";
-                cin >> prowadzacy;
+                getline(cin >> ws, prowadzacy);
+                
                 cout << "Podaj dzien: ";
-                cin >> dzien;
+                cin >> dzien_str;
+                if(dzien_str == "poniedzialek" || dzien_str == "Poniedzialek")
+                {
+                    dzien = 1;
+                }
+                else if(dzien_str == "wtorek" || dzien_str == "Wtorek")
+                {
+                    dzien = 2;
+                }
+                else if(dzien_str == "sroda" || dzien_str == "Sroda")
+                {
+                    dzien = 3;
+                }
+                else if(dzien_str == "czwartek" || dzien_str == "Czwartek")
+                {
+                    dzien = 4;
+                }
+                else if(dzien_str == "piatek" || dzien_str == "Piatek")
+                {
+                    dzien = 5;
+                }
+                else if(dzien_str == "sobota" || dzien_str == "Sobota")
+                {
+                    dzien = 6;
+                }
+                else if(dzien_str == "niedziela" || dzien_str == "Niedziela")
+                {
+                    dzien = 7;
+                }
+                else
+                {
+                    dzien = 1;
+                }
+
                 cout << "Podaj godzine rozpoczecia: ";
                 cin >> godzina;
                 cout << "Podaj minute rozpoczecia: ";
