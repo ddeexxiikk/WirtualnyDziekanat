@@ -410,7 +410,7 @@ void Pracownik::dodaj_plan_zajec(string kierunek, string grupa, Plan_zajec::lekc
     {
         throw BladPliku("blad pliku - Plan zajec.txt");
     }
-    plik << kierunek << ";" << grupa << ";" << lekcja.tytul << ";" << lekcja.sala << ";" << lekcja.prowadzacy << ";" << lekcja.dzien 
-    << ";" << lekcja.godzina_rozpoczecia << ";" << lekcja.minuta_rozpoczecia << ";" << lekcja.czas_trwania << endl;
+    plik << kierunek << ";" << grupa << ";" << lekcja.tytul << ";" << lekcja.sala << ";" << lekcja.prowadzacy << ";"
+    << lekcja.godzina_rozpoczecia << ";" << lekcja.minuta_rozpoczecia << ";" << lekcja.czas_trwania << ";" << lekcja.dzien << endl;
     plik.close();
 }

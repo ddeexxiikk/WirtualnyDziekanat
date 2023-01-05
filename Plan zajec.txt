@@ -1,4 +1,5 @@
 IwIK;11i;Matematyka;A1;prof.Piękosz;9;30;90;1
 IwIK;12i;Matematyka;A1;prof.Piękosz;10;0;90;1
 IwIK;11i;C++;A4;prof. Bąk;11;30;90;1
-IwIK;11i;Fizyka;F110;prof.Muc;5;12;15;90
+IwIK;11i;Fizyka;F110;prof.Muc;12;12;15;1
+IwIK;11i;Fizyka;F120;prof.Muc;12;15;90;2
