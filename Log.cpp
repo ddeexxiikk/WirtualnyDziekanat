@@ -5,6 +5,7 @@
 #include <iomanip>
 #include <iostream>
 #include <algorithm>
+#include "Wyjatki.h"
 
 Log::Log()
 {
@@ -14,20 +15,19 @@ Log::Log()
     oss << put_time(&tmp, "%d-%m-%Y %H-%M-%S");
     nazwa_pliku = "logi\\" + oss.str();
     
-    try
+   
+    ofstream plik;
+    plik.open(nazwa_pliku.c_str());
+    if(!plik.good())
     {
-        ofstream plik;
-        plik.open(nazwa_pliku.c_str());
-        plik << "Data urochomienia programu: " << oss.str() << endl;
         plik.close();
+        throw BladPliku("blad pliku - " + nazwa_pliku);
     }
-    catch(const ofstream::failure& e)
-    {
-        std::cerr << e.what() << '\n';
-    }
+    plik << "Data urochomienia programu: " << oss.str() << endl;
+    plik.close();
 }
 
-bool Log::zapisz_akcje(string wiadomosc)
+void Log::zapisz_akcje(string wiadomosc)
 {
     auto data = time(nullptr);
     auto tmp = *localtime(&data);
@@ -38,10 +38,10 @@ bool Log::zapisz_akcje(string wiadomosc)
     plik.open(nazwa_pliku, ios::app);
     if(!plik.good())
     {
-        return false;
+        plik.close();
+        throw BladPliku("blad pliku - " + nazwa_pliku);
     }
 
     plik << oss.str() << " >> " << wiadomosc << endl;
     plik.close();
-    return true;
 }

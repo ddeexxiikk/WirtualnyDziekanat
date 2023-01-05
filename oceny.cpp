@@ -1,7 +1,7 @@
 #include "oceny.h"
 #include <fstream>
 #include <sstream>
-
+#include "Wyjatki.h"
 oceny::oceny(string file_name, string login, string przedmiot)
 {
     ifstream data;
@@ -21,6 +21,11 @@ oceny::oceny(string file_name, string login, string przedmiot)
                 stopnie[stoi(temp_semestr)]=stoi(temp_ocena);
             }
         }
+    }
+    else
+    {
+        data.close();
+        throw BladPliku("blad pliku - " + file_name);
     }
     data.close();
 }

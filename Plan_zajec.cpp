@@ -3,7 +3,7 @@
 #include <iostream>
 #include <bits/stdc++.h>
 #include <sstream>
-
+#include "Wyjatki.h"
 using namespace std;
 
 void Plan_zajec::import(string nazwa_pliku, string akierunek, string agrupa)
@@ -35,6 +35,11 @@ void Plan_zajec::import(string nazwa_pliku, string akierunek, string agrupa)
             lekcja nowa(temp_tytul, temp_sala, temp_prowadzacy, stoi(temp_dzien), stoi(temp_godz), stoi(temp_min), stoi(temp_czas));
             zajecia.push_back(nowa);
         }
+    }
+    else
+    {
+        plan.close();
+        throw BladPliku("blad pliku - " + nazwa_pliku);
     }
     plan.close();
     sort(zajecia.begin(), zajecia.end(), [ ](const lekcja &zajecia1, const lekcja &zajecia2)

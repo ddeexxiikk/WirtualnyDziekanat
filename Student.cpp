@@ -1,6 +1,7 @@
 #include "Student.h"
 #include <fstream>
 #include <iostream>
+#include "Wyjatki.h"
 
 Student::Student(string alogin, string aimie, string anazwisko, string akierunek, int asemestr):Czlowiek(alogin, aimie, anazwisko)
 {
@@ -12,6 +13,11 @@ Student::Student(string file_name, string alogin):Czlowiek("", "", "")
 {
     ifstream data;
     data.open(file_name.c_str());
+    if(!data.good())
+    {
+        data.close();
+        throw BladPliku("blad pliku - " + file_name);
+    }
     string temp_login, temp_imie, temp_nazwisko, temp_kierunek, temp_grupa;
     int temp_semestr;
     while(data>>temp_login>>temp_imie>>temp_nazwisko>>temp_kierunek>>temp_grupa>>temp_semestr)

@@ -14,17 +14,18 @@ class Pracownik:public Czlowiek
         };
         int sprawdz_ocene(string file_name, string login, string przedmiot, int semestr);
         string sprawdzenie_grupy_student(string file_name, string alogin);
-        bool dodaj_ocene(string alogin, string aprzedmiot, int semestr, double ocena);
-        bool dodaj_studenta(string alogin, string ahaslo, string grupa, string wydzial, string aimie, string anazwisko, string semestr);
-        bool usun_studenta(string alogin, string aimie, string anazwisko);
+        void dodaj_ocene(string alogin, string aprzedmiot, int semestr, double ocena);
+        void dodaj_studenta(string alogin, string ahaslo, string grupa, string wydzial, string aimie, string anazwisko, string semestr);
+        void usun_studenta(string alogin, string aimie, string anazwisko);
         bool sprawdz_plan_zajec_studenta(string akierunek, string agrupa);
         int dodaj_ksiazke_studentowi(string alogin, string atytul);
-        bool usun_ksiazke_studentowi(string alogin, string atytul);
-        bool dodaj_plan_zajec(string kierunek, string grupa, Plan_zajec::lekcja lekcja);
+        void usun_ksiazke_studentowi(string alogin, string atytul);
+        void dodaj_plan_zajec(string kierunek, string grupa, Plan_zajec::lekcja lekcja);
         void display();
     protected:
 
     private:
+        int _stoi(const string& str, size_t* pos, int base);
 };
 
 #endif // PRACOWNIK_H

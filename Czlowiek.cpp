@@ -1,7 +1,7 @@
 #include "Czlowiek.h"
 #include <fstream>
 #include <iostream>
-
+#include "Wyjatki.h"
 using namespace std;
 
 Czlowiek::Czlowiek(string alogin, string aimie, string anazwisko)
@@ -17,6 +17,16 @@ void Czlowiek::zmien_haslo(string file_name, string nowe_haslo)
     ofstream temp;
     dane.open(file_name.c_str());
     temp.open("temp.txt");
+    if(!dane.good())
+    {
+        dane.close();
+        throw BladPliku("blad pliku - " + file_name);
+    }
+    if(!temp.good())
+    {
+        temp.close();
+        throw BladPliku("blad pliku - temp.txt");
+    }
     string temp_login, temp_password;
     int access_lvl;
     while(dane>>temp_login>>temp_password>>access_lvl)

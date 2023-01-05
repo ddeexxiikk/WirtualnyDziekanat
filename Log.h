@@ -8,7 +8,7 @@ class Log
 {
 public:
     Log();
-    bool zapisz_akcje(string wiadomosc);
+    void zapisz_akcje(string wiadomosc);
 
 private:
     string nazwa_pliku;
