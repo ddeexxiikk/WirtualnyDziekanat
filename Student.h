@@ -4,26 +4,40 @@
 #include "oceny.h"
 #include "Plan_zajec.h"
 #include <map>
-#include <utility>
 
 class Student : public Czlowiek
 {
     public:
         Student(string alogin, string aimie, string anazwisko, string akierunek, int asemestr);
         Student(string file_name, string login); //ten konstruktor pobiera dane z pliku
-        class oceny_studenta: public oceny{
-            bool dodanie_oceny(int ocena, int semestr);
-        };
         void display();
         string sprawdzenie_grupy();
         void wyswietl_plan();
+        vector<string> sprawdz_liste_ksiazek();
+
+        class Ocena
+        {
+        public:
+            Ocena(string aprzedmiot, int asemestr, int aocena)
+                : przedmiot(aprzedmiot), semestr(asemestr), ocena(aocena)
+            {} 
+            
+            string przedmiot;
+            int semestr;
+            int ocena;
+        };
+
+        vector<Ocena> sprawdz_oceny(int asemestr);
 
     protected:
 
     private:
+        bool wczytaj_ksiazki();
+        bool wczytaj_oceny();
+        vector<string> lista_ksiazek;
+        vector<Ocena> oceny;
         string kierunek, grupa;
         int semestr;
-        map<string, oceny_studenta>przedmioty;
         Plan_zajec plan;
 };
 

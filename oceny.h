@@ -9,10 +9,10 @@ class oceny
 {
     public:
         oceny(string file_name, string login, string przedmiot);
-        virtual bool dodanie_oceny(int ocena, int semestr)=0;
+        bool dodanie_oceny(int ocena, int semestr);
 
     protected:
-         vector<int> stopnie;//0 - znaczy brak oceny, pozosta³e oceny tak jak normalnie na studiach
+         vector<int> stopnie;//0 - znaczy brak oceny, pozostaï¿½e oceny tak jak normalnie na studiach
     private:
 };
 

@@ -18,7 +18,7 @@ using namespace std;
 
 void pauza()
 {
-    cout << "nacisnij dowolny klawisz aby kontynuowac...";
+    cout << "\nnacisnij dowolny klawisz aby kontynuowac...";
     cin.ignore();
     cin.clear();
     cin.get();
@@ -123,6 +123,7 @@ int wyswietlanie_menu(int poziom_dostepu)
             cout<<"3. Sprawdz plan zajec"<<endl;
             cout<<"4. Sprawdz swoja grupe"<<endl;
             cout<<"5. Sprawdz ksiazki"<<endl;
+            cout << "Podaj wybor: ";
             opcja=wybor_opcji(1, 5);
             break;
         }
@@ -138,6 +139,7 @@ int wyswietlanie_menu(int poziom_dostepu)
             cout<<"8. Sprawdz grupe studenta"<<endl;
             cout<<"9. Dodaj studenta"<<endl;
             cout<<"10. Usun studenta"<<endl;
+            cout << "Podaj wybor: ";
             opcja=wybor_opcji(1, 10)+10;
             break;
         }
@@ -162,7 +164,29 @@ bool obsluz_opcje(int opcja, void *&obiekt, Log& log)
             }
             case 2:
             {
-                cout<<"Wybrano opcje 2"<<endl;
+                cout<<"Podaj semestr: ";
+                int semestr;
+                cin >> semestr;
+                vector<Student::Ocena> oceny = ((Student*)obiekt)->sprawdz_oceny(semestr);
+                if(!oceny.size())
+                {
+                    cout << " Brak ocen w danym semestrze" << endl;
+                    log.zapisz_akcje("sprawdzono ksiazki:brak ocen w danym semestrze");
+                }
+                else
+                {   
+                    cout << "Lista ocen:\n";
+                    std::string pom;
+                    for(const auto& e : oceny)
+                    {
+                        cout << e.przedmiot << ": " << e.ocena << endl;
+                        pom += e.przedmiot + " " + to_string(e.ocena) + ", ";
+                    }
+                    pom.pop_back();
+                    pom.pop_back();
+                    log.zapisz_akcje("sprawdzono oceny:" + pom);
+
+                }
                 break;
             }
             case 3:
@@ -179,7 +203,26 @@ bool obsluz_opcje(int opcja, void *&obiekt, Log& log)
             }
             case 5:
             {
-                cout<<"Wybrano opcje 5"<<endl;
+                vector<string> lista_ksiazek = ((Student*)obiekt)->sprawdz_liste_ksiazek();
+                if(!lista_ksiazek.size())
+                {
+                    cout << " Brak ksiazek" << endl;
+                    log.zapisz_akcje("sprawdzono ksiazki:brak ksiazek");
+                }
+                else
+                {   
+                    cout << "Lista ksiazek:\n";
+                    std::string pom;
+                    for(const auto& e : lista_ksiazek)
+                    {
+                        cout << e << endl;
+                        pom += e + ", ";
+                    }
+                    pom.pop_back();
+                    pom.pop_back();
+                    log.zapisz_akcje("sprawdzono ksiazki:" + pom);
+
+                }
                 break;
             }
             case 11:
@@ -198,9 +241,9 @@ bool obsluz_opcje(int opcja, void *&obiekt, Log& log)
                 int semestr;
                 double ocena;
                 cout << "Podaj login studenta:";
-                cin >> login;
+                getline(cin >> ws, login);
                 cout << "Podaj przdedmiot:";
-                cin >> przedmiot;
+                getline(cin >> ws, przedmiot);
                 cout << "Podaj semestr:";
                 cin >> semestr;
                 cout << "Podaj ocene:";
@@ -215,9 +258,9 @@ bool obsluz_opcje(int opcja, void *&obiekt, Log& log)
                 string login, przedmiot;
                 int semestr;
                 cout<<"Podaj login studenta: ";
-                cin>>login;
+                getline(cin >> ws, login);
                 cout<<"Podaj przedmiot: ";
-                cin>>przedmiot;
+                getline(cin >> ws, przedmiot);
                 cout<<"Podaj semestr: ";
                 cin>>semestr;
                 int result=((Pracownik*)obiekt)->sprawdz_ocene("grades.txt", login, przedmiot, semestr);
@@ -238,9 +281,9 @@ bool obsluz_opcje(int opcja, void *&obiekt, Log& log)
                 //cout<<"Wybrano opcje 14"<<endl;
                 string kierunek, grupa;
                 cout << "Podaj kierunek: ";
-                cin >> kierunek;
+                getline(cin >> ws, kierunek);
                 cout << "Podaj grupe: ";
-                cin >> grupa;
+                getline(cin >> ws, grupa);
                 if(!((Pracownik*)obiekt)->sprawdz_plan_zajec_studenta(kierunek, grupa)) return false;
                 log.zapisz_akcje("sprawdzono plan zajec:" + kierunek + " " + grupa);
                 break;
@@ -250,7 +293,7 @@ bool obsluz_opcje(int opcja, void *&obiekt, Log& log)
                 //cout<<"Wybrano opcje 15"<<endl;
                 string login, tytul;
                 cout << "Podaj login studenta: ";
-                cin >> login;
+                getline(cin >> ws, login);
                 cout << "Podaj tytul ksiazki do wypozyczenia: ";
                 getline(cin >> ws, tytul);
 
@@ -272,7 +315,7 @@ bool obsluz_opcje(int opcja, void *&obiekt, Log& log)
                 //cout<<"Wybrano opcje 16"<<endl;
                 string login, tytul;
                 cout << "Podaj login studenta: ";
-                cin >> login;
+                getline(cin >> ws, login);
                 cout << "Podaj tytul ksiazki do usuniecia: ";
                 getline(cin >> ws, tytul);
 
@@ -349,7 +392,7 @@ bool obsluz_opcje(int opcja, void *&obiekt, Log& log)
             {
                 string login;
                 cout<<"Podaj login studenta: ";
-                cin>>login;
+                getline(cin >> ws, login);
                 cout<<"Grupa studenta "<<login<<": "<<((Pracownik*)obiekt)->sprawdzenie_grupy_student("Student data.txt", login)<<endl;
                 log.zapisz_akcje("sprawdzono grupe studencka studenta:" + login);
                 break;
@@ -359,19 +402,19 @@ bool obsluz_opcje(int opcja, void *&obiekt, Log& log)
                 //cout<<"Wybrano opcje 19"<<endl;
                 string login, haslo, grupa, imie, nazwisko, wydzial, semestr;
                 cout<<"Podaj login nowego studenta: ";
-                cin>>login;
+                getline(cin >> ws, login);
                 cout<<"Podaj haslo nowego studenta: ";
-                cin>>haslo;
+                getline(cin >> ws, haslo);
                 cout<<"Podaj imie nowego studenta: ";
-                cin>>imie;
+                getline(cin >> ws, imie);;
                 cout<<"Podaj nazwisko nowego studenta: ";
-                cin>>nazwisko;
+                getline(cin >> ws, nazwisko);;
                 cout<<"Podaj wydzial nowego studenta: ";
-                cin>>wydzial;
+                getline(cin >> ws, wydzial);
                 cout<<"Podaj grupe nowego studenta: ";
-                cin>>grupa;
+                getline(cin >> ws, grupa);
                 cout<<"Podaj semestr na ktorym ma byc nowy student: ";
-                cin>>semestr;
+                getline(cin >> ws, semestr);
                 ((Pracownik*)obiekt)->dodaj_studenta(login, haslo, grupa, wydzial, imie, nazwisko, semestr);
                 log.zapisz_akcje("dodano studenta:" + login + " " + grupa + " " + wydzial + " " + imie + " " + nazwisko + " " + semestr);
                 break;
@@ -381,11 +424,11 @@ bool obsluz_opcje(int opcja, void *&obiekt, Log& log)
                 //cout<<"Wybrano opcje 20"<<endl;
                 string login, imie, nazwisko;
                 cout << "Podaj login studenta, ktorego chcesz usunac: ";
-                cin >> login;
+                getline(cin >> ws, login);
                 cout << "Podaj imie studenta, ktorego chcesz usunac: ";
-                cin >> imie;
+                getline(cin >> ws, imie);
                 cout << "Podaj nazwisko studenta, ktorego chcesz usunac: ";
-                cin >> nazwisko;
+                getline(cin >> ws, nazwisko);
                 ((Pracownik*)obiekt)->usun_studenta(login, imie, nazwisko);
                 log.zapisz_akcje("usunieto studenta:" + login + " " + imie + " " + nazwisko);
                 break;
