@@ -2,6 +2,7 @@
 #define PLAN_ZAJEC_H
 #include <vector>
 #include <iostream>
+#include <string>
 
 using namespace std;
 
@@ -44,7 +45,7 @@ class Plan_zajec
                 +display_time(minuta_rozpoczecia)+"-"+display_time(godzina_zakonczenia)+":"+display_time(minuta_zakonczenia);
             }
         };
-        void display();
+        void display(std::string agrupa = "");
     protected:
         vector<lekcja> zajecia;
     private:

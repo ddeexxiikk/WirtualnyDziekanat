@@ -20,7 +20,7 @@ int CzyPoprawnyUzytkownik(string alogin, string ahaslo);
 
 bool obsluz_opcje(int opcja, void *&obiekt, Log& log);
 
-int wyswietlanie_menu(int poziom_dostepu);
+int wyswietlanie_menu(int poziom_dostepu, void*& obiekt);
 
 int wybor_opcji(int min_przedzialu, int max_przedzialu);
 

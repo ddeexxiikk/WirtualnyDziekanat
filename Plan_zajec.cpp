@@ -32,14 +32,17 @@ void Plan_zajec::import(string nazwa_pliku, string akierunek, string agrupa)
             getline(csvStream, temp_min, ';');
             getline(csvStream, temp_czas, ';');
             getline(csvStream, temp_dzien, ';');
-            lekcja nowa(temp_tytul, temp_sala, temp_prowadzacy, stoi(temp_dzien), stoi(temp_godz), stoi(temp_min), stoi(temp_czas));
-            zajecia.push_back(nowa);
+            if(temp_grupa == agrupa && temp_kierunek == akierunek)
+            {
+                lekcja nowa(temp_tytul, temp_sala, temp_prowadzacy, stoi(temp_dzien), stoi(temp_godz), stoi(temp_min), stoi(temp_czas));
+                zajecia.push_back(nowa);
+            }
         }
     }
     else
     {
         plan.close();
-        throw BladPliku("blad pliku - " + nazwa_pliku);
+        throw BladPliku(string("blad pliku - " + nazwa_pliku).c_str());
     }
     plan.close();
     sort(zajecia.begin(), zajecia.end(), [ ](const lekcja &zajecia1, const lekcja &zajecia2)
@@ -50,7 +53,7 @@ void Plan_zajec::import(string nazwa_pliku, string akierunek, string agrupa)
         });
 }
 
-void Plan_zajec::display()
+void Plan_zajec::display(string grupa)
 {
     for(lekcja i : zajecia) cout<<i.display()<<endl;
 }

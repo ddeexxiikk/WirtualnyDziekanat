@@ -20,7 +20,7 @@ void Czlowiek::zmien_haslo(string file_name, string nowe_haslo)
     if(!dane.good())
     {
         dane.close();
-        throw BladPliku("blad pliku - " + file_name);
+        throw BladPliku(string("blad pliku - " + file_name).c_str());
     }
     if(!temp.good())
     {

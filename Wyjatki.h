@@ -7,7 +7,7 @@ using namespace std;
 class BladPliku : public exception 
 {
 public:
-    BladPliku(string wiad) : wiadomosc(wiad) 
+    BladPliku(const char* wiad) : wiadomosc(wiad) 
     {}
 
     const char * what () const noexcept override

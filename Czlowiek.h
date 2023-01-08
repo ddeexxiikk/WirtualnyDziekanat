@@ -12,6 +12,7 @@ class Czlowiek {
     public:
         Czlowiek(string alogin, string aimie, string anazwisko);
         void zmien_haslo(string file_name, string nowe_haslo);
+        virtual void wyswietl_informacje()=0;
 };
 
 #endif

@@ -16,9 +16,10 @@ class Pracownik:public Czlowiek
         void usun_studenta(string alogin, string aimie, string anazwisko);
         bool sprawdz_plan_zajec_studenta(string akierunek, string agrupa);
         int dodaj_ksiazke_studentowi(string alogin, string atytul);
-        void usun_ksiazke_studentowi(string alogin, string atytul);
+        int usun_ksiazke_studentowi(string alogin, string atytul);
         void dodaj_plan_zajec(string kierunek, string grupa, Plan_zajec::lekcja lekcja);
-        void display();
+        void wyswietl_informacje() override;
+        
     protected:
 
     private:

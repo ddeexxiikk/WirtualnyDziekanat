@@ -1,9 +1,9 @@
 #ifndef OCENA_H
 #define OCENA_H
-#include <vector>
-#include <iostream>
 
 using namespace std;
+
+#include <string>
 
 class Ocena
 {
@@ -14,6 +14,6 @@ public:
     string przedmiot;
     int semestr;
     int ocena;
-    };
+};
 
 #endif // OCENA_H

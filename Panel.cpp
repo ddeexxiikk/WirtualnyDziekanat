@@ -110,14 +110,18 @@ int wybor_opcji(int min_przedzialu, int max_przedzialu)
     Zwraca numer wybranej opcji (dla studenta) albo numer wybranej opcji +10 dla pracownika
 */
 
-int wyswietlanie_menu(int poziom_dostepu)
+int wyswietlanie_menu(int poziom_dostepu, void*& obiekt)
 {
     int opcja;
-    cout<<"Menu: "<<endl<<"Wpisz q aby wyjsc z programu"<<endl;
     switch(poziom_dostepu)
     {
         case 1:
         {
+            Student* stud = (Student*)obiekt;
+            Czlowiek* uzyt = stud;
+            cout << endl;
+            uzyt->wyswietl_informacje();
+            cout << "Wpisz q aby wyjsc z programu" << endl;
             cout<<"1. Zmien haslo"<<endl;
             cout<<"2. Sprawdz oceny"<<endl;
             cout<<"3. Sprawdz plan zajec"<<endl;
@@ -129,6 +133,11 @@ int wyswietlanie_menu(int poziom_dostepu)
         }
         case 2:
         {
+            Pracownik* prac = (Pracownik*)obiekt;
+            Czlowiek* uzyt = prac;
+            cout << endl;
+            uzyt->wyswietl_informacje();
+            cout << "Wpisz q aby wyjsc z programu" << endl;
             cout<<"1. Zmien haslo"<<endl;
             cout<<"2. Dodaj ocene"<<endl;
             cout<<"3. Sprawdz oceny studenta"<<endl;
@@ -156,7 +165,7 @@ bool obsluz_opcje(int opcja, void *&obiekt, Log& log)
             case 1:
             {
                 string new_password;
-                cout<<"Podaj nowe haslo: ";
+                cout<<"\nPodaj nowe haslo: ";
                 cin>>new_password;
                 ((Student*)obiekt)->zmien_haslo("baza\\Uzytkownicy.txt", new_password);
                 cout << "Zmieniono haslo" << endl;
@@ -165,7 +174,7 @@ bool obsluz_opcje(int opcja, void *&obiekt, Log& log)
             }
             case 2:
             {
-                cout<<"Podaj semestr: ";
+                cout<<"\nPodaj semestr: ";
                 int semestr;
                 cin >> semestr;
                 vector<Ocena> oceny = ((Student*)obiekt)->sprawdz_oceny(semestr);
@@ -192,18 +201,20 @@ bool obsluz_opcje(int opcja, void *&obiekt, Log& log)
             }
             case 3:
             {
+                cout << endl;
                 ((Student*)obiekt)->wyswietl_plan();
                 log.zapisz_akcje("wyswietlono plan");
                 break;
             }
             case 4:
             {
-                cout<<"Grupa: "<<((Student*)obiekt)->sprawdzenie_grupy()<<endl;
+                cout<<"\nGrupa: "<<((Student*)obiekt)->sprawdzenie_grupy()<<endl;
                 log.zapisz_akcje("sprawdzono grupe");
                 break;
             }
             case 5:
             {
+                cout << endl;
                 vector<string> lista_ksiazek = ((Student*)obiekt)->sprawdz_liste_ksiazek();
                 if(!lista_ksiazek.size())
                 {
@@ -229,7 +240,7 @@ bool obsluz_opcje(int opcja, void *&obiekt, Log& log)
             case 11:
             {
                 string new_password;
-                cout<<"Podaj nowe haslo: ";
+                cout<<"\nPodaj nowe haslo: ";
                 cin>>new_password;
                 ((Pracownik*)obiekt)->zmien_haslo("baza\\Uzytkownicy.txt", new_password);
                 log.zapisz_akcje("zmieniono haslo");
@@ -241,7 +252,7 @@ bool obsluz_opcje(int opcja, void *&obiekt, Log& log)
                 string login, przedmiot;
                 int semestr;
                 double ocena;
-                cout << "Podaj login studenta:";
+                cout << "\nPodaj login studenta:";
                 getline(cin >> ws, login);
                 cout << "Podaj przdedmiot:";
                 getline(cin >> ws, przedmiot);
@@ -250,6 +261,7 @@ bool obsluz_opcje(int opcja, void *&obiekt, Log& log)
                 cout << "Podaj ocene:";
                 cin >> ocena;
                 ((Pracownik*)obiekt)->dodaj_ocene(login, przedmiot, semestr, ocena);
+                cout << "Dodano ocene" << endl;
                 log.zapisz_akcje("dodano ocene studentowi:" + login + " " + przedmiot + " " + to_string(semestr) + " " + to_string(ocena));
                 break;
             }
@@ -258,7 +270,7 @@ bool obsluz_opcje(int opcja, void *&obiekt, Log& log)
                 //cout<<"Wybrano opcje 13"<<endl;
                 string login, przedmiot;
                 int semestr;
-                cout<<"Podaj login studenta: ";
+                cout<<"\nPodaj login studenta: ";
                 getline(cin >> ws, login);
                 cout<<"Podaj przedmiot: ";
                 getline(cin >> ws, przedmiot);
@@ -272,7 +284,7 @@ bool obsluz_opcje(int opcja, void *&obiekt, Log& log)
                 }
                 else
                 {
-                    cout << result << endl;
+                    cout << "ocena: " << result << endl;
                     log.zapisz_akcje("sprawdzono ocene:" + login + " " + przedmiot + " " + to_string(semestr) + " " + to_string(result));
                 }
                 break;
@@ -281,7 +293,7 @@ bool obsluz_opcje(int opcja, void *&obiekt, Log& log)
             {
                 //cout<<"Wybrano opcje 14"<<endl;
                 string kierunek, grupa;
-                cout << "Podaj kierunek: ";
+                cout << "\nPodaj kierunek: ";
                 getline(cin >> ws, kierunek);
                 cout << "Podaj grupe: ";
                 getline(cin >> ws, grupa);
@@ -293,7 +305,7 @@ bool obsluz_opcje(int opcja, void *&obiekt, Log& log)
             {
                 //cout<<"Wybrano opcje 15"<<endl;
                 string login, tytul;
-                cout << "Podaj login studenta: ";
+                cout << "\nPodaj login studenta: ";
                 getline(cin >> ws, login);
                 cout << "Podaj tytul ksiazki do wypozyczenia: ";
                 getline(cin >> ws, tytul);
@@ -315,14 +327,22 @@ bool obsluz_opcje(int opcja, void *&obiekt, Log& log)
             {
                 //cout<<"Wybrano opcje 16"<<endl;
                 string login, tytul;
-                cout << "Podaj login studenta: ";
+                cout << "\nPodaj login studenta: ";
                 getline(cin >> ws, login);
                 cout << "Podaj tytul ksiazki do usuniecia: ";
                 getline(cin >> ws, tytul);
 
-                ((Pracownik*)obiekt)->usun_ksiazke_studentowi(login, tytul);
-                log.zapisz_akcje("usunieto ksiazke studentowi ksiazke:blad");
-                log.zapisz_akcje("usunieto ksiazke studentowi ksiazke:" + login + " " + tytul);
+                int rezultat = ((Pracownik*)obiekt)->usun_ksiazke_studentowi(login, tytul);
+                if(rezultat == 1)
+                {
+                    cout << "\nBlad w usuwaniu ksiazki studenta" << endl;
+                    log.zapisz_akcje("blad w usuwaniu ksiazki studenta:" + login + " " + tytul);
+                }
+                else
+                {
+                    cout << "\nUsunieto ksiazke" << endl;
+                    log.zapisz_akcje("usunieto ksiazke studentowi ksiazke:" + login + " " + tytul);
+                }
                 break;
             }
             case 17:
@@ -331,7 +351,7 @@ bool obsluz_opcje(int opcja, void *&obiekt, Log& log)
                 string kierunek, grupa, tytul, sala, prowadzacy, dzien_str;
                 int dzien, godzina, min, czas;
 
-                cout << "Podaj nazwe kierunku: ";
+                cout << "\nPodaj nazwe kierunku: ";
                 getline(cin >> ws, kierunek);
                 cout << "Podaj nazwe grupy: ";
                 getline(cin >> ws, grupa);
@@ -386,15 +406,16 @@ bool obsluz_opcje(int opcja, void *&obiekt, Log& log)
 
                 Plan_zajec::lekcja l(tytul, sala, prowadzacy, dzien, godzina, min, czas);
                 ((Pracownik*)obiekt)->dodaj_plan_zajec(kierunek, grupa, l);
+                cout << "\nDodano plan zajec" << endl;
                 log.zapisz_akcje("dodano plan zajec:" + kierunek + " " + grupa + " " + l.display());
                 break;
             }
             case 18:
             {
                 string login;
-                cout<<"Podaj login studenta: ";
+                cout<<"\nPodaj login studenta: ";
                 getline(cin >> ws, login);
-                cout<<"Grupa studenta "<<login<<": "<<((Pracownik*)obiekt)->sprawdzenie_grupy_student("baza\\Student dane.txt", login)<<endl;
+                cout<<"\nGrupa studenta "<<login<<": "<<((Pracownik*)obiekt)->sprawdzenie_grupy_student("baza\\Student dane.txt", login)<<endl;
                 log.zapisz_akcje("sprawdzono grupe studencka studenta:" + login);
                 break;
             }
@@ -402,7 +423,7 @@ bool obsluz_opcje(int opcja, void *&obiekt, Log& log)
             {
                 //cout<<"Wybrano opcje 19"<<endl;
                 string login, haslo, grupa, imie, nazwisko, wydzial, semestr;
-                cout<<"Podaj login nowego studenta: ";
+                cout<<"\nPodaj login nowego studenta: ";
                 getline(cin >> ws, login);
                 cout<<"Podaj haslo nowego studenta: ";
                 getline(cin >> ws, haslo);
@@ -417,6 +438,7 @@ bool obsluz_opcje(int opcja, void *&obiekt, Log& log)
                 cout<<"Podaj semestr na ktorym ma byc nowy student: ";
                 getline(cin >> ws, semestr);
                 ((Pracownik*)obiekt)->dodaj_studenta(login, haslo, grupa, wydzial, imie, nazwisko, semestr);
+                cout << "\nDodano studenta" << endl;
                 log.zapisz_akcje("dodano studenta:" + login + " " + grupa + " " + wydzial + " " + imie + " " + nazwisko + " " + semestr);
                 break;
             }
@@ -424,13 +446,14 @@ bool obsluz_opcje(int opcja, void *&obiekt, Log& log)
             {
                 //cout<<"Wybrano opcje 20"<<endl;
                 string login, imie, nazwisko;
-                cout << "Podaj login studenta, ktorego chcesz usunac: ";
+                cout << "\nPodaj login studenta, ktorego chcesz usunac: ";
                 getline(cin >> ws, login);
                 cout << "Podaj imie studenta, ktorego chcesz usunac: ";
                 getline(cin >> ws, imie);
                 cout << "Podaj nazwisko studenta, ktorego chcesz usunac: ";
                 getline(cin >> ws, nazwisko);
                 ((Pracownik*)obiekt)->usun_studenta(login, imie, nazwisko);
+                cout << "\nUsunieto studenta" << endl;
                 log.zapisz_akcje("usunieto studenta:" + login + " " + imie + " " + nazwisko);
                 break;
             }

@@ -23,7 +23,7 @@ int main()
         bool result = true;
         while(result)
         {
-            opcja=wyswietlanie_menu(poziom_dostepu);
+            opcja=wyswietlanie_menu(poziom_dostepu, obiekt);
             result=obsluz_opcje(opcja, obiekt, log);
         }
         log.zapisz_akcje("zakonczono dzialanie programu");

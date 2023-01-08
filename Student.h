@@ -16,6 +16,8 @@ class Student : public Czlowiek
         vector<string> sprawdz_liste_ksiazek();
         vector<Ocena> sprawdz_oceny(int asemestr);
 
+        void wyswietl_informacje() override;
+
     protected:
 
     private:

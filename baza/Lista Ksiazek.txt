@@ -1,6 +1,6 @@
-Pan Tadeusz 7
+Pan Tadeusz 12
 Wiedzmin 20
 Pan Wolodyjowski 30
-Podstawy C++ dla studentow informatyki 99
+Podstawy C++ dla studentow informatyki 98
 Jak zrozumiec system UNIX dla niewtajemniczonych 99
 Firewall, ktory nie powstrzyma prawdziwego smoka 99

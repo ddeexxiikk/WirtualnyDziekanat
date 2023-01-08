@@ -18,7 +18,7 @@ Student::Student(string file_name, string alogin):Czlowiek("", "", "")
     if(!data.good())
     {
         data.close();
-        throw BladPliku("blad pliku - " + file_name);
+        throw BladPliku(string("blad pliku - " + file_name).c_str());
     }
     string temp_login, temp_imie, temp_nazwisko, temp_kierunek, temp_grupa;
     int temp_semestr;
@@ -48,7 +48,7 @@ bool Student::wczytaj_ksiazki()
     if(!plik.good())
     {
         plik.close();
-        throw BladPliku("blad pliku - Ksiazki Studentow.txt");
+        throw BladPliku(string("blad pliku - Ksiazki Studentow.txt").c_str());
     }
 
     string linia, login_temp;
@@ -126,4 +126,9 @@ vector<Ocena> Student::sprawdz_oceny(int asemestr)
     }
 
     return temp;
+}
+
+void Student::wyswietl_informacje()
+{
+    cout << "Student: " << imie << " " << nazwisko << endl;
 }

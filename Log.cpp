@@ -21,7 +21,7 @@ Log::Log()
     if(!plik.good())
     {
         plik.close();
-        throw BladPliku("blad pliku - " + nazwa_pliku);
+        throw BladPliku(string("blad pliku - " + nazwa_pliku).c_str());
     }
     plik << "Data urochomienia programu: " << oss.str() << endl;
     plik.close();
@@ -39,7 +39,7 @@ void Log::zapisz_akcje(string wiadomosc)
     if(!plik.good())
     {
         plik.close();
-        throw BladPliku("blad pliku - " + nazwa_pliku);
+        throw BladPliku(string("blad pliku - " + nazwa_pliku).c_str());
     }
 
     plik << oss.str() << " >> " << wiadomosc << endl;
