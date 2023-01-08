@@ -1,7 +1,7 @@
 #ifndef STUDENT_H
 #define STUDENT_H
 #include "Czlowiek.h"
-#include "oceny.h"
+#include "Ocena.h"
 #include "Plan_zajec.h"
 #include <map>
 
@@ -14,19 +14,6 @@ class Student : public Czlowiek
         string sprawdzenie_grupy();
         void wyswietl_plan();
         vector<string> sprawdz_liste_ksiazek();
-
-        class Ocena
-        {
-        public:
-            Ocena(string aprzedmiot, int asemestr, int aocena)
-                : przedmiot(aprzedmiot), semestr(asemestr), ocena(aocena)
-            {} 
-            
-            string przedmiot;
-            int semestr;
-            int ocena;
-        };
-
         vector<Ocena> sprawdz_oceny(int asemestr);
 
     protected:

@@ -35,7 +35,7 @@ Student::Student(string file_name, string alogin):Czlowiek("", "", "")
         }
     }
     data.close();
-    plan.import("Plan zajec.txt", kierunek, grupa);
+    plan.import("baza\\Plan Zajec.txt", kierunek, grupa);
     wczytaj_ksiazki();
     wczytaj_oceny();
     //plan("Plan zajec test.txt", kierunek, grupa);
@@ -44,11 +44,11 @@ Student::Student(string file_name, string alogin):Czlowiek("", "", "")
 bool Student::wczytaj_ksiazki()
 {
     ifstream plik;
-    plik.open("ksiazki studentow.txt");
+    plik.open("baza\\Ksiazki Studentow.txt");
     if(!plik.good())
     {
         plik.close();
-        throw BladPliku("blad pliku - ksiazki studentow.txt");
+        throw BladPliku("blad pliku - Ksiazki Studentow.txt");
     }
 
     string linia, login_temp;
@@ -90,12 +90,12 @@ vector<string> Student::sprawdz_liste_ksiazek()
 bool Student::wczytaj_oceny()
 {
     ifstream data;
-    data.open("grades.txt");
+    data.open("baza\\Oceny.txt");
     string line, temp_login, temp_przedmiot, temp_semestr, temp_ocena;
     if(!data.good())
     {
         data.close();
-        throw BladPliku("blad pliku - gradex.txt");
+        throw BladPliku("blad pliku - Oceny.txt");
     }
         
     while(getline(data, line))
@@ -114,7 +114,7 @@ bool Student::wczytaj_oceny()
     return true;
 }
 
-vector<Student::Ocena> Student::sprawdz_oceny(int asemestr)
+vector<Ocena> Student::sprawdz_oceny(int asemestr)
 {
     vector<Ocena> temp;
     for(const auto& e: oceny)

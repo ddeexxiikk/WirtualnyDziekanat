@@ -81,12 +81,6 @@ string Pracownik::sprawdzenie_grupy_student(string file_name, string alogin)
     return "Nie znaleziono studenta";
 }
 
-bool Pracownik::oceny_studenta::dodanie_oceny(int ocena, int semestr)
-{
-    //this->oceny_koncowe[semestr]=ocena;
-    return true;
-}
-
 void Pracownik::display()
 {
     cout<<"Pracownik: "<<imie<<" "<<nazwisko<<endl;
@@ -95,11 +89,11 @@ void Pracownik::display()
 void Pracownik::dodaj_ocene(string alogin, string aprzedmiot, int semestr, double ocena)
 {
     ofstream data;
-    data.open("grades.txt", ios::app);
+    data.open("baza\\Oceny.txt", ios::app);
     if(!data.good())
     {
         data.close();
-        throw BladPliku("blad pliku - grades.txt");
+        throw BladPliku("blad pliku - Oceny.txt");
     }
     data << alogin << ";" << aprzedmiot << ";" << semestr << ";" << ocena << '\n';
     data.close();
@@ -141,20 +135,20 @@ int Pracownik::sprawdz_ocene(string file_name, string alogin, string przedmiot, 
 void Pracownik::dodaj_studenta(string alogin, string ahaslo, string grupa, string wydzial, string aimie, string anazwisko, string semestr)
 {
     ofstream logowanie;
-    logowanie.open("Users.txt", ios::app);
+    logowanie.open("baza\\Uzytkownicy.txt", ios::app);
     if(!logowanie.good())
     {
         logowanie.close();
-        throw BladPliku("blad pliku - Users.txt");
+        throw BladPliku("blad pliku - Uzytkownicy.txt");
     }
     logowanie<<endl<<alogin<<" "<<ahaslo<<" 1"<<endl;
     logowanie.close();
     ofstream dane;
-    dane.open("Student data.txt", ios::app);
+    dane.open("Studendt dane.txt", ios::app);
     if(!dane.good())
     {
         dane.close();
-        throw BladPliku("blad pliku - Student data.txt");
+        throw BladPliku("blad pliku - Studendt dane.txt");
     }
     dane<<endl<<alogin<<" "<<aimie<<" "<<anazwisko<<" "<<wydzial<<" "<<grupa<<" "<<semestr<<endl; // dodać semestr
     dane.close();
@@ -170,11 +164,11 @@ void Pracownik::usun_studenta(string alogin, string aimie, string anazwisko)
     string tempdostep;
 
     ifstream data_odczyt;
-    data_odczyt.open("Student data.txt");
+    data_odczyt.open("baza\\Studendt dane.txt");
     if(!data_odczyt.good())
     {
         data_odczyt.close();
-        throw BladPliku("blad pliku - Student data.txt");
+        throw BladPliku("blad pliku - Student dane.txt");
     }
  
     while(getline(data_odczyt, line))
@@ -200,11 +194,11 @@ void Pracownik::usun_studenta(string alogin, string aimie, string anazwisko)
     data_odczyt.close();
 
     ofstream data_zapis;
-    data_zapis.open("Student data.txt", ios::trunc);
+    data_zapis.open("baza\\Student dane.txt", ios::trunc);
     if(!data_zapis.good())
     {
         data_zapis.close();
-        throw BladPliku("blad pliku - Student data.txt");
+        throw BladPliku("blad pliku - Student dane.txt");
     }
     data_zapis << plik;
     data_zapis.close();
@@ -212,11 +206,11 @@ void Pracownik::usun_studenta(string alogin, string aimie, string anazwisko)
     plik.clear();
     line.clear();
     ifstream users_odczyt;
-    users_odczyt.open("Users.txt");  
+    users_odczyt.open("baza\\Uzytkownicy.txt");  
     if(!users_odczyt.good())
     {
         users_odczyt.close();
-        throw BladPliku("blad pliku - Users.txt");
+        throw BladPliku("blad pliku - Uzytkownicy.txt");
     }
     while(getline(users_odczyt, line))
     {
@@ -238,11 +232,11 @@ void Pracownik::usun_studenta(string alogin, string aimie, string anazwisko)
     users_odczyt.close();
 
     ofstream users_zapis;
-    users_zapis.open("Users.txt", ios::trunc);
+    users_zapis.open("baza\\Uzytkownicy.txt", ios::trunc);
     if(!users_zapis.good())
     {
         users_zapis.close();
-        throw BladPliku("blad pliku - Users.txt");
+        throw BladPliku("blad pliku - Uzytkownicy.txt");
     }
     users_zapis << plik;
     users_zapis.close();
@@ -251,7 +245,7 @@ void Pracownik::usun_studenta(string alogin, string aimie, string anazwisko)
 bool Pracownik::sprawdz_plan_zajec_studenta(string akierunek, string agrupa)
 {
     Plan_zajec plan;
-    plan.import("Plan zajec.txt", akierunek, agrupa);
+    plan.import("baza\\Plan zajec.txt", akierunek, agrupa);
     plan.display();
 
     return true;
@@ -260,11 +254,11 @@ bool Pracownik::sprawdz_plan_zajec_studenta(string akierunek, string agrupa)
 int Pracownik::dodaj_ksiazke_studentowi(string alogin, string atytul)
 {
     ifstream ksiazki_odczyt;
-    ksiazki_odczyt.open("ListaKsiazek.txt");
+    ksiazki_odczyt.open("baza\\Lista Ksiazek.txt");
     if(!ksiazki_odczyt.good())
     {
         ksiazki_odczyt.close();
-        throw BladPliku("blad pliku - ListaKsiazek.txt");
+        throw BladPliku("blad pliku - Lista Ksiazek.txt");
     }
 
     string plik;
@@ -299,21 +293,21 @@ int Pracownik::dodaj_ksiazke_studentowi(string alogin, string atytul)
     }
 
     ofstream ksiazki_zapis;
-    ksiazki_zapis.open("ListaKsiazek.txt", ios::trunc);
+    ksiazki_zapis.open("baza\\Lista Ksiazek.txt", ios::trunc);
     if(!ksiazki_zapis.good())
     {
         ksiazki_zapis.close();
-        throw BladPliku("ListaKsiazek.txt");
+        throw BladPliku("baza\\Lista Ksiazek.txt");
     }
     ksiazki_zapis << plik;
     ksiazki_zapis.close();
 
     ofstream ksiazki;
-    ksiazki.open("ksiazki studentow.txt", ios::app);
+    ksiazki.open("baza\\Ksiazki Studentow.txt", ios::app);
     if(!ksiazki.good())
     {
         ksiazki.close();
-        throw BladPliku("blad pliku - ksiazki studentow.txt");
+        throw BladPliku("blad pliku - Ksiazki Studentow.txt");
     }
 
     ksiazki << alogin << " " << atytul << endl;
@@ -324,11 +318,11 @@ int Pracownik::dodaj_ksiazke_studentowi(string alogin, string atytul)
 void Pracownik::usun_ksiazke_studentowi(string alogin, string atytul)
 {
     ifstream ksiazki_odczyt;
-    ksiazki_odczyt.open("ksiazki studentow.txt");
+    ksiazki_odczyt.open("baza\\Ksiazki Studentow.txt");
     if(!ksiazki_odczyt.good())
     {
         ksiazki_odczyt.close();
-        throw BladPliku("blad pliku - ksiazki studentow.txt");
+        throw BladPliku("blad pliku - Ksiazki Studentow.txt");
     }
 
     string plik;
@@ -351,21 +345,21 @@ void Pracownik::usun_ksiazke_studentowi(string alogin, string atytul)
     ksiazki_odczyt.close();
 
     ofstream ksiazki_zapis;
-    ksiazki_zapis.open("ksiazki studentow.txt", ios::trunc);
+    ksiazki_zapis.open("baza\\Ksiazki Studentow.txt", ios::trunc);
     if(!ksiazki_zapis.good())
     {
         ksiazki_zapis.close();
-        throw BladPliku("blad pliku - ksiazki studentow.txt");
+        throw BladPliku("blad pliku - Ksiazki Studentow.txt");
     }
     ksiazki_zapis << plik;
     ksiazki_zapis.close();
 
     ifstream lista_ksiazek_odczyt;
-    lista_ksiazek_odczyt.open("ListaKsiazek.txt");
+    lista_ksiazek_odczyt.open("baza\\Lista Ksiazek.txt");
     if(!lista_ksiazek_odczyt.good())
     {
         lista_ksiazek_odczyt.close();
-        throw BladPliku("blad pliku - ListaKsiazek.txt");
+        throw BladPliku("blad pliku - Lista Ksiazek.txt");
     }
 
     plik.clear();
@@ -391,11 +385,11 @@ void Pracownik::usun_ksiazke_studentowi(string alogin, string atytul)
     lista_ksiazek_odczyt.close();
 
     ofstream lista_ksiazek_zapis;
-    lista_ksiazek_zapis.open("ListaKsiazek.txt", ios::trunc);
+    lista_ksiazek_zapis.open("baza\\Lista Ksiazek.txt", ios::trunc);
     if(!lista_ksiazek_zapis.good())
     {
         lista_ksiazek_zapis.close();
-        throw BladPliku("blad pliku - ListaKsiazek.txt");
+        throw BladPliku("blad pliku - Lista Ksiazek.txt");
     }
 
     lista_ksiazek_zapis << plik;
@@ -405,7 +399,7 @@ void Pracownik::usun_ksiazke_studentowi(string alogin, string atytul)
 void Pracownik::dodaj_plan_zajec(string kierunek, string grupa, Plan_zajec::lekcja lekcja)
 {
     ofstream plik;
-    plik.open("Plan zajec.txt", ios::app);
+    plik.open("baza\\Plan zajec.txt", ios::app);
     if(!plik.good())
     {
         throw BladPliku("blad pliku - Plan zajec.txt");

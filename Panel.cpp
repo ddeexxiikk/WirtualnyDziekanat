@@ -46,12 +46,12 @@ int PanelLogowania(void *&obiekt, Log& log)
     {
         if(result==1) 
         {
-            obiekt = new Student("Student data.txt", login);
+            obiekt = new Student("baza\\Student dane.txt", login);
             log.zapisz_akcje("zalogowanie studenta:" + login);
         }
         if(result==2) 
         {
-            obiekt = new Pracownik("Worker data.txt", login);
+            obiekt = new Pracownik("baza\\Pracownik dane.txt", login);
             log.zapisz_akcje("zalogowanie pracownika:" + login);
         }
         return result;
@@ -71,10 +71,10 @@ int PanelLogowania(void *&obiekt, Log& log)
 int CzyPoprawnyUzytkownik(string alogin, string ahaslo)
 {
     ifstream logowanie;
-    logowanie.open("Users.txt");
+    logowanie.open("baza\\Uzytkownicy.txt");
     if(!logowanie.good())
     {
-        throw BladPliku("blad pliku - Users.txt");
+        throw BladPliku("blad pliku - Uzytkownicy.txt");
     }
     string temp_login, temp_password;
     int access_lvl;
@@ -158,7 +158,8 @@ bool obsluz_opcje(int opcja, void *&obiekt, Log& log)
                 string new_password;
                 cout<<"Podaj nowe haslo: ";
                 cin>>new_password;
-                ((Student*)obiekt)->zmien_haslo("Users.txt", new_password);
+                ((Student*)obiekt)->zmien_haslo("baza\\Uzytkownicy.txt", new_password);
+                cout << "Zmieniono haslo" << endl;
                 log.zapisz_akcje("zmieniono haslo");
                 break;
             }
@@ -167,7 +168,7 @@ bool obsluz_opcje(int opcja, void *&obiekt, Log& log)
                 cout<<"Podaj semestr: ";
                 int semestr;
                 cin >> semestr;
-                vector<Student::Ocena> oceny = ((Student*)obiekt)->sprawdz_oceny(semestr);
+                vector<Ocena> oceny = ((Student*)obiekt)->sprawdz_oceny(semestr);
                 if(!oceny.size())
                 {
                     cout << " Brak ocen w danym semestrze" << endl;
@@ -230,7 +231,7 @@ bool obsluz_opcje(int opcja, void *&obiekt, Log& log)
                 string new_password;
                 cout<<"Podaj nowe haslo: ";
                 cin>>new_password;
-                ((Pracownik*)obiekt)->zmien_haslo("Users.txt", new_password);
+                ((Pracownik*)obiekt)->zmien_haslo("baza\\Uzytkownicy.txt", new_password);
                 log.zapisz_akcje("zmieniono haslo");
                 break;
             }
@@ -263,7 +264,7 @@ bool obsluz_opcje(int opcja, void *&obiekt, Log& log)
                 getline(cin >> ws, przedmiot);
                 cout<<"Podaj semestr: ";
                 cin>>semestr;
-                int result=((Pracownik*)obiekt)->sprawdz_ocene("grades.txt", login, przedmiot, semestr);
+                int result=((Pracownik*)obiekt)->sprawdz_ocene("baza\\Oceny.txt", login, przedmiot, semestr);
                 if(result==0) 
                 {
                     cout<<"Brak oceny"<<endl;
@@ -393,7 +394,7 @@ bool obsluz_opcje(int opcja, void *&obiekt, Log& log)
                 string login;
                 cout<<"Podaj login studenta: ";
                 getline(cin >> ws, login);
-                cout<<"Grupa studenta "<<login<<": "<<((Pracownik*)obiekt)->sprawdzenie_grupy_student("Student data.txt", login)<<endl;
+                cout<<"Grupa studenta "<<login<<": "<<((Pracownik*)obiekt)->sprawdzenie_grupy_student("baza\\Student dane.txt", login)<<endl;
                 log.zapisz_akcje("sprawdzono grupe studencka studenta:" + login);
                 break;
             }
