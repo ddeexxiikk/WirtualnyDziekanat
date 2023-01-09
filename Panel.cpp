@@ -27,41 +27,59 @@ void pauza()
 
 int PanelLogowania(void *&obiekt, Log& log)
 {
-    static int counter=0;
-    if(counter==3) exit(1);
+    int counter=0;
     string login, password;
-    cout<<"Podaj login: ";
-    cin>>login;
-    cout<<"Podaj haslo: ";
-    cin>>password;
-    int result = 0;
+    do
+    {
+        login.clear(); password.clear();
+        cout<<"Podaj login: ";
+        cin>>login;
+        cout<<"Podaj haslo: ";
+        cin>>password;
+        int result = 0;
+
+        try
+        {
+            result=CzyPoprawnyUzytkownik(login, password);
+
+            if(result!=0)
+            {
+                if(result==1) 
+                {
+                    obiekt = new Student("baza\\Student dane.txt", login);
+                    log.zapisz_akcje("zalogowanie studenta:" + login);
+                }
+                if(result==2) 
+                {
+                    obiekt = new Pracownik("baza\\Pracownik dane.txt", login);
+                    log.zapisz_akcje("zalogowanie pracownika:" + login);
+                }
+                return result;
+            }
+            cout<<"Niepoprawne haslo lub login"<<endl;
+            log.zapisz_akcje("wprowadzono niepoprawne haslo lub login");
+            counter++;
+        }
+        catch(const BladPliku& e)
+        {
+            cerr << e.what() << endl;
+            return 0;
+        }
+
+    }while(counter < 3);
+
     try
     {
-        result=CzyPoprawnyUzytkownik(login, password);
+        cout << "Przekroczno limit prob zalogowania sie" << endl;
+        log.zapisz_akcje("przekroczno limit prob zalogowania sie");
     }
     catch(const BladPliku& e)
     {
         cerr << e.what() << endl;
+        return 0;
     }
-    if(result!=0)
-    {
-        if(result==1) 
-        {
-            obiekt = new Student("baza\\Student dane.txt", login);
-            log.zapisz_akcje("zalogowanie studenta:" + login);
-        }
-        if(result==2) 
-        {
-            obiekt = new Pracownik("baza\\Pracownik dane.txt", login);
-            log.zapisz_akcje("zalogowanie pracownika:" + login);
-        }
-        return result;
-    }
-    counter++;
-    Sleep(500);
-    cout<<"Niepoprawne haslo lub login, sprobuj ponownie"<<endl;
-    log.zapisz_akcje("wprowadzono niepoprawne haslo lub login");
-    PanelLogowania(obiekt, log);
+
+    return 0;
 }
 
 /*  Funkcja łączy się z bazą danych i sprawdza login i hasło wprowadzone przez użytkownika,

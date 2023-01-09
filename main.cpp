@@ -19,6 +19,10 @@ int main()
         cout << "Zaloguj sie aby przejsc dalej..." << endl;
         void *obiekt;
         int poziom_dostepu=PanelLogowania(obiekt, log);
+        if(!poziom_dostepu)
+        {
+            return 0;
+        }
         int opcja;
         bool result = true;
         while(result)
