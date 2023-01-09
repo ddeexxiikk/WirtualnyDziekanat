@@ -1,5 +1,5 @@
 Pan Tadeusz 12
-Wiedzmin 20
+Wiedzmin 19
 Pan Wolodyjowski 30
 Podstawy C++ dla studentow informatyki 98
 Jak zrozumiec system UNIX dla niewtajemniczonych 99

@@ -7,3 +7,4 @@
 10001;Fizyka;1;5
 10003;Fizyka;2;3
 10001;Python;1;5
+10020;Fizyka;1;3

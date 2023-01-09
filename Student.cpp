@@ -4,6 +4,7 @@
 #include "Wyjatki.h"
 #include <string>
 #include <sstream>
+#include <algorithm>
 
 Student::Student(string alogin, string aimie, string anazwisko, string akierunek, int asemestr):Czlowiek(alogin, aimie, anazwisko)
 {
@@ -112,6 +113,54 @@ bool Student::wczytaj_oceny()
     }
     data.close();
     return true;
+}
+
+vector<pair<int, Ocena>> Student::sprawdz_oceny_w_calym_toku_studiow()
+{
+    vector<pair<int, Ocena>> temp;
+    vector<Ocena> temp_oceny;
+    ifstream data;
+    data.open("baza\\Oceny.txt");
+    if(!data.good())
+    {
+        data.close();
+        throw BladPliku(string("blad pliku - baza\\Oceny.txt").c_str());
+    }
+
+    string line, temp_login, temp_przedmiot, temp_semestr, temp_ocena;
+    while(getline(data, line))
+    {
+        istringstream csvStream(line);
+        getline(csvStream, temp_login, ';');
+        getline(csvStream, temp_przedmiot, ';');
+        getline(csvStream, temp_semestr, ';');
+        getline(csvStream, temp_ocena, ';');
+        if(login == temp_login)
+        {
+            temp_oceny.push_back(Ocena(temp_przedmiot, stoi(temp_semestr), stoi(temp_ocena)));
+        }
+    }
+
+    sort(temp_oceny.begin(), temp_oceny.end(), 
+    [](const Ocena& o1, const Ocena& o2)
+    {
+        if(o1.ocena > o2.ocena)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    });
+    
+    for(std::size_t i = 0; i < temp_oceny.size(); i++)
+    {
+       temp.push_back(make_pair(temp_oceny.at(i).semestr, temp_oceny.at(i)));
+    }
+
+    data.close();
+    return temp;
 }
 
 vector<Ocena> Student::sprawdz_oceny(int asemestr)

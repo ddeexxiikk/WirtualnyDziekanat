@@ -3,6 +3,7 @@
 #include <fstream>
 #include <iostream>
 #include <sstream>
+#include <algorithm>
 #include "Log.h"
 #include "Wyjatki.h"
 
@@ -132,6 +133,83 @@ int Pracownik::sprawdz_ocene(string file_name, string alogin, string przedmiot, 
     throw BladPliku(string("blad pliku - " + file_name).c_str());
 }
 
+vector<Ocena> Pracownik::sprawadz_oceny_z_calego_semestru(string file_name, string login, int semestr)
+{
+    vector<Ocena> temp;
+    ifstream data;
+    data.open(file_name.c_str());
+    if(!data.good())
+    {
+        data.close();
+        throw BladPliku(string("blad pliku - " + file_name).c_str());
+    }
+
+    string line, temp_login, temp_przedmiot, temp_semestr, temp_ocena;
+    while(getline(data, line))
+    {
+        istringstream csvStream(line);
+        getline(csvStream, temp_login, ';');
+        getline(csvStream, temp_przedmiot, ';');
+        getline(csvStream, temp_semestr, ';');
+        getline(csvStream, temp_ocena, ';');
+        if(semestr == stoi(temp_semestr) && login == temp_login)
+        {
+            temp.push_back(Ocena(temp_przedmiot, _stoi(temp_semestr), _stoi(temp_ocena)));
+        }
+    }
+    data.close();
+    return temp;
+}
+
+vector<pair<int, Ocena>> Pracownik::sprawdz_oceny_z_calego_toku_studiow(string file_name, string login)
+{
+    vector<pair<int, Ocena>> temp;
+    vector<Ocena> temp_oceny;
+    ifstream data;
+    data.open(file_name.c_str());
+    if(!data.good())
+    {
+        data.close();
+        throw BladPliku(string("blad pliku - " + file_name).c_str());
+    }
+
+    string line, temp_login, temp_przedmiot, temp_semestr, temp_ocena;
+    while(getline(data, line))
+    {
+        istringstream csvStream(line);
+        getline(csvStream, temp_login, ';');
+        getline(csvStream, temp_przedmiot, ';');
+        getline(csvStream, temp_semestr, ';');
+        getline(csvStream, temp_ocena, ';');
+        if(login == temp_login)
+        {
+            temp_oceny.push_back(Ocena(temp_przedmiot, _stoi(temp_semestr), _stoi(temp_ocena)));
+        }
+    }
+
+    sort(temp_oceny.begin(), temp_oceny.end(), 
+    [](const Ocena& o1, const Ocena& o2)
+    {
+        if(o1.ocena > o2.ocena)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    });
+    
+    for(std::size_t i = 0; i < temp_oceny.size(); i++)
+    {
+       temp.push_back(make_pair(temp_oceny.at(i).semestr, temp_oceny.at(i)));
+    }
+
+    data.close();
+    return temp;
+}
+
+
 void Pracownik::dodaj_studenta(string alogin, string ahaslo, string grupa, string wydzial, string aimie, string anazwisko, string semestr)
 {
     ofstream logowanie;
@@ -154,7 +232,7 @@ void Pracownik::dodaj_studenta(string alogin, string ahaslo, string grupa, strin
     dane.close();
 }
 
-void Pracownik::usun_studenta(string alogin, string aimie, string anazwisko)
+int Pracownik::usun_studenta(string alogin, string aimie, string anazwisko)
 {
     string line;
     string plik;
@@ -162,6 +240,7 @@ void Pracownik::usun_studenta(string alogin, string aimie, string anazwisko)
     string tempimie;
     string tempnazwisko;
     string tempdostep;
+    bool student_nie_istnieje = false;
 
     ifstream data_odczyt;
     data_odczyt.open("baza\\Student dane.txt");
@@ -190,8 +269,17 @@ void Pracownik::usun_studenta(string alogin, string aimie, string anazwisko)
         {
             plik += line + '\n';
         }
+        else
+        {
+            student_nie_istnieje = true;
+        }
     }
     data_odczyt.close();
+
+    if(!student_nie_istnieje)
+    {
+        return 1;
+    }
 
     ofstream data_zapis;
     data_zapis.open("baza\\Student dane.txt", ios::trunc);
@@ -200,6 +288,7 @@ void Pracownik::usun_studenta(string alogin, string aimie, string anazwisko)
         data_zapis.close();
         throw BladPliku("blad pliku - Student dane.txt");
     }
+    plik.pop_back();
     data_zapis << plik;
     data_zapis.close();
 
@@ -237,8 +326,11 @@ void Pracownik::usun_studenta(string alogin, string aimie, string anazwisko)
         users_zapis.close();
         throw BladPliku("blad pliku - Uzytkownicy.txt");
     }
+    plik.pop_back();
     users_zapis << plik;
     users_zapis.close();
+
+    return 0;
 }
 
 bool Pracownik::sprawdz_plan_zajec_studenta(string akierunek, string agrupa)

@@ -15,6 +15,7 @@ class Student : public Czlowiek
         void wyswietl_plan();
         vector<string> sprawdz_liste_ksiazek();
         vector<Ocena> sprawdz_oceny(int asemestr);
+        vector<pair<int, Ocena>> sprawdz_oceny_w_calym_toku_studiow();
 
         void wyswietl_informacje() override;
 

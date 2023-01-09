@@ -3,3 +3,4 @@
 10005 Podstawy C++ dla studentow informatyki
 10001 Pan Tadeusz
 10020 Podstawy C++ dla studentow informatyki
+10002 Wiedzmin

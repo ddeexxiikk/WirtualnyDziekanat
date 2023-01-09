@@ -3,6 +3,7 @@
 #include <windows.h>
 #include <string>
 #include <fstream>
+#include <algorithm>
 #include "Student.h"
 #include "Pracownik.h"
 #include "Log.h"
@@ -57,7 +58,6 @@ int PanelLogowania(void *&obiekt, Log& log)
         return result;
     }
     counter++;
-    pauza();
     Sleep(500);
     cout<<"Niepoprawne haslo lub login, sprobuj ponownie"<<endl;
     log.zapisz_akcje("wprowadzono niepoprawne haslo lub login");
@@ -141,10 +141,10 @@ int wyswietlanie_menu(int poziom_dostepu, void*& obiekt)
             cout<<"1. Zmien haslo"<<endl;
             cout<<"2. Dodaj ocene"<<endl;
             cout<<"3. Sprawdz oceny studenta"<<endl;
-            cout<<"4. Sprawdz plan zajec studenta"<<endl;
+            cout<<"4. Sprawdz plan zajec grupy"<<endl;
             cout<<"5. Dodaj ksiazke studenta"<<endl;
             cout<<"6. Usun ksiazke studenta"<<endl;
-            cout<<"7. Dodaj plan zajec studenta"<<endl;
+            cout<<"7. Dodaj plan zajec grupy"<<endl;
             cout<<"8. Sprawdz grupe studenta"<<endl;
             cout<<"9. Dodaj studenta"<<endl;
             cout<<"10. Usun studenta"<<endl;
@@ -174,28 +174,55 @@ bool obsluz_opcje(int opcja, void *&obiekt, Log& log)
             }
             case 2:
             {
-                cout<<"\nPodaj semestr: ";
-                int semestr;
-                cin >> semestr;
-                vector<Ocena> oceny = ((Student*)obiekt)->sprawdz_oceny(semestr);
-                if(!oceny.size())
+                cout << "\nW jaki sposob chcesz zobaczyc oceny?\n";
+                cout << "1. z calego semestru\n";
+                cout << "2. z calego dotychczasowego toku studiow\n";
+                cout << "Podaj opcje: ";
+                int opcja;
+                cin >> opcja;
+
+                if(opcja == 1)
                 {
-                    cout << " Brak ocen w danym semestrze" << endl;
-                    log.zapisz_akcje("sprawdzono ksiazki:brak ocen w danym semestrze");
+                    cout<<"\nPodaj semestr: ";
+                    int semestr;
+                    cin >> semestr;
+                    vector<Ocena> oceny = ((Student*)obiekt)->sprawdz_oceny(semestr);
+                    if(!oceny.size())
+                    {
+                        cout << " Brak ocen w danym semestrze" << endl;
+                        log.zapisz_akcje("sprawdzono ksiazki:brak ocen w danym semestrze");
+                    }
+                    else
+                    {   
+                        cout << "\nLista ocen:\n";
+                        for(const auto& e : oceny)
+                        {
+                            cout << e.przedmiot << ": " << e.ocena << endl;
+                        }
+                        log.zapisz_akcje(string("sprawdzono oceny w semestrze" + to_string(semestr)).c_str());
+                    }
+                }
+                else if(opcja == 2)
+                {
+                    auto rezultat = ((Student*)obiekt)->sprawdz_oceny_w_calym_toku_studiow();
+                    if(!rezultat.size())
+                    {
+                        cout << "\nBrak ocen" << endl;
+                        log.zapisz_akcje("sprawdzono oceny z calego toku studiow: brak ocen");
+                    }
+                    else
+                    {
+                        cout << endl;
+                        for(const auto& e : rezultat)
+                        {
+                            cout << "semestr " << e.first << ": " << e.second.przedmiot << " " << e.second.ocena << endl;
+                        }
+                        log.zapisz_akcje(string("sprawdzono oceny z calego toku studiow").c_str());
+                    }
                 }
                 else
-                {   
-                    cout << "Lista ocen:\n";
-                    std::string pom;
-                    for(const auto& e : oceny)
-                    {
-                        cout << e.przedmiot << ": " << e.ocena << endl;
-                        pom += e.przedmiot + " " + to_string(e.ocena) + ", ";
-                    }
-                    pom.pop_back();
-                    pom.pop_back();
-                    log.zapisz_akcje("sprawdzono oceny:" + pom);
-
+                {
+                    cout << "\nZla opcja" << endl;
                 }
                 break;
             }
@@ -267,25 +294,86 @@ bool obsluz_opcje(int opcja, void *&obiekt, Log& log)
             }
             case 13:
             {
-                //cout<<"Wybrano opcje 13"<<endl;
-                string login, przedmiot;
-                int semestr;
-                cout<<"\nPodaj login studenta: ";
-                getline(cin >> ws, login);
-                cout<<"Podaj przedmiot: ";
-                getline(cin >> ws, przedmiot);
-                cout<<"Podaj semestr: ";
-                cin>>semestr;
-                int result=((Pracownik*)obiekt)->sprawdz_ocene("baza\\Oceny.txt", login, przedmiot, semestr);
-                if(result==0) 
+                cout << "\nW jaki sposob chcesz zobaczyc oceny?\n";
+                cout << "1. danego przedmiotu w danym semestrze\n";
+                cout << "2. z calego semestru\n";
+                cout << "3. z calego dotychczasowego toku studiow\n";
+                cout << "Podaj opcje: ";
+                int opcja;
+                cin >> opcja;
+
+                if(opcja == 1)
                 {
-                    cout<<"Brak oceny"<<endl;
-                    log.zapisz_akcje("sprawdzono ocene:brak oceny");
+                    string login, przedmiot;
+                    int semestr;
+                    cout<<"\nPodaj login studenta: ";
+                    getline(cin >> ws, login);
+                    cout<<"Podaj przedmiot: ";
+                    getline(cin >> ws, przedmiot);
+                    cout<<"Podaj semestr: ";
+                    cin>>semestr;
+                    int result=((Pracownik*)obiekt)->sprawdz_ocene("baza\\Oceny.txt", login, przedmiot, semestr);
+                    if(result==0) 
+                    {
+                        cout<<"\nBrak oceny"<<endl;
+                        log.zapisz_akcje("sprawdzono ocene:brak oceny");
+                    }
+                    else
+                    {
+                        cout << "\nocena: " << result << endl;
+                        log.zapisz_akcje("sprawdzono ocene:" + login + " " + przedmiot + " " + to_string(semestr) + " " + to_string(result));
+                    }
+                }
+                else if (opcja == 2)
+                {
+                    string login;
+                    int semestr;
+                    cout<<"\nPodaj login studenta: ";
+                    getline(cin >> ws, login);
+                    cout<<"Podaj semestr: ";
+                    cin>>semestr;
+
+                    vector<Ocena> rezultat = ((Pracownik*)obiekt)->sprawadz_oceny_z_calego_semestru("baza\\Oceny.txt", login, semestr);
+                    if(!rezultat.size())
+                    {
+                        cout << "\nBrak ocen w danym semestrze" << endl;
+                        log.zapisz_akcje("sprawdzono oceny z calego semestru: brak ocen");
+                    }
+                    else
+                    {
+                        cout << "\noceny:\n";
+                        for(const auto& e : rezultat)
+                        {
+                            cout << e.przedmiot << " " << e.ocena << endl;
+                        }
+                        log.zapisz_akcje(string("sprawdzono oceny z calego semestru studenta: " + login).c_str());
+                    }
+                }
+                else if(opcja == 3)
+                {
+                    string login;
+                    cout << "\nPodaj login:";
+                    getline(cin >> ws, login);
+
+                    auto rezultat = ((Pracownik*)obiekt)->sprawdz_oceny_z_calego_toku_studiow("baza\\Oceny.txt", login);
+                    if(!rezultat.size())
+                    {
+                        cout << "\nBrak ocen" << endl;
+                        log.zapisz_akcje("sprawdzono oceny z calego toku studiow: brak ocen");
+                    }
+                    else
+                    {
+                        cout << endl;
+                        for(const auto& e : rezultat)
+                        {
+                            cout << "semestr " << e.first << ": " << e.second.przedmiot << " " << e.second.ocena << endl;
+                        }
+                        log.zapisz_akcje(string("sprawdzono oceny z calego toku studiow studenta: " + login).c_str());
+                    }
                 }
                 else
                 {
-                    cout << "ocena: " << result << endl;
-                    log.zapisz_akcje("sprawdzono ocene:" + login + " " + przedmiot + " " + to_string(semestr) + " " + to_string(result));
+                    cout << "\nZla opcja" << endl;
                 }
                 break;
             }
@@ -422,9 +510,9 @@ bool obsluz_opcje(int opcja, void *&obiekt, Log& log)
             case 19:
             {
                 //cout<<"Wybrano opcje 19"<<endl;
-                string login, haslo, grupa, imie, nazwisko, wydzial, semestr;
-                cout<<"\nPodaj login nowego studenta: ";
-                getline(cin >> ws, login);
+                string haslo, grupa, imie, nazwisko, wydzial, semestr;
+                int login = wygeneruj_login_studenta();
+                cout<<"\nWygenerowano login studenta: " << login << endl;
                 cout<<"Podaj haslo nowego studenta: ";
                 getline(cin >> ws, haslo);
                 cout<<"Podaj imie nowego studenta: ";
@@ -437,9 +525,9 @@ bool obsluz_opcje(int opcja, void *&obiekt, Log& log)
                 getline(cin >> ws, grupa);
                 cout<<"Podaj semestr na ktorym ma byc nowy student: ";
                 getline(cin >> ws, semestr);
-                ((Pracownik*)obiekt)->dodaj_studenta(login, haslo, grupa, wydzial, imie, nazwisko, semestr);
+                ((Pracownik*)obiekt)->dodaj_studenta(to_string(login), haslo, grupa, wydzial, imie, nazwisko, semestr);
                 cout << "\nDodano studenta" << endl;
-                log.zapisz_akcje("dodano studenta:" + login + " " + grupa + " " + wydzial + " " + imie + " " + nazwisko + " " + semestr);
+                log.zapisz_akcje("dodano studenta:" + to_string(login) + " " + grupa + " " + wydzial + " " + imie + " " + nazwisko + " " + semestr);
                 break;
             }
             case 20:
@@ -452,9 +540,18 @@ bool obsluz_opcje(int opcja, void *&obiekt, Log& log)
                 getline(cin >> ws, imie);
                 cout << "Podaj nazwisko studenta, ktorego chcesz usunac: ";
                 getline(cin >> ws, nazwisko);
-                ((Pracownik*)obiekt)->usun_studenta(login, imie, nazwisko);
-                cout << "\nUsunieto studenta" << endl;
-                log.zapisz_akcje("usunieto studenta:" + login + " " + imie + " " + nazwisko);
+                int rezultat = ((Pracownik*)obiekt)->usun_studenta(login, imie, nazwisko);
+
+                if(rezultat == 1)
+                {
+                    cout << "\nStudent nie istnieje" << endl;
+                    log.zapisz_akcje("usunieto studenta: student nie istnieje");
+                }
+                else
+                {
+                    cout << "\nUsunieto studenta" << endl;
+                    log.zapisz_akcje("usunieto studenta:" + login + " " + imie + " " + nazwisko);
+                }
                 break;
             }
             default:
@@ -480,4 +577,31 @@ bool obsluz_opcje(int opcja, void *&obiekt, Log& log)
     pauza();
     system("cls");
     return true;
+}
+
+int wygeneruj_login_studenta()
+{
+    ifstream plik;
+    plik.open("baza\\Uzytkownicy.txt");
+    if(!plik.good())
+    {
+        plik.close();
+        throw BladPliku("blad pliku - Uzytkownicy.txt");
+    }
+
+    int login_temp;
+    string haslo_temp;
+    int tryb_temp;
+
+    vector<int> pom;
+
+    while(plik >> login_temp >> haslo_temp >> tryb_temp)
+    {
+        pom.push_back(login_temp);
+    }
+
+    sort(pom.begin(), pom.end());
+
+    plik.close();
+    return pom.at(pom.size() - 1) + 1;
 }
