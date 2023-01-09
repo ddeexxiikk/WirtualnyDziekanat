@@ -45,7 +45,7 @@ class Plan_zajec
                 +display_time(minuta_rozpoczecia)+"-"+display_time(godzina_zakonczenia)+":"+display_time(minuta_zakonczenia);
             }
         };
-        void display(std::string agrupa = "");
+        void display();
     protected:
         vector<lekcja> zajecia;
     private:

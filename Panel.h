@@ -24,4 +24,6 @@ int wyswietlanie_menu(int poziom_dostepu, void*& obiekt);
 
 int wybor_opcji(int min_przedzialu, int max_przedzialu);
 
+int wygeneruj_login_studenta();
+
 #endif

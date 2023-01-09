@@ -53,7 +53,7 @@ void Plan_zajec::import(string nazwa_pliku, string akierunek, string agrupa)
         });
 }
 
-void Plan_zajec::display(string grupa)
+void Plan_zajec::display()
 {
     for(lekcja i : zajecia) cout<<i.display()<<endl;
 }
