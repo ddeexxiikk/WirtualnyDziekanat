@@ -1,0 +1,9 @@
+10001;Matematyka;2;3
+10002;Matematyka;1;4
+10005;Fizyka;3;3
+10002;Fizyka;2;3
+10003;Matematyka;1;4
+10001;C++;1;5
+10001;Fizyka;1;5
+10003;Fizyka;2;3
+10001;Python;1;5
