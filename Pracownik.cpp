@@ -96,7 +96,7 @@ void Pracownik::dodaj_ocene(string alogin, string aprzedmiot, int semestr, doubl
         data.close();
         throw BladPliku("blad pliku - Oceny.txt");
     }
-    data << alogin << ";" << aprzedmiot << ";" << semestr << ";" << ocena;
+    data << alogin << ";" << aprzedmiot << ";" << semestr << ";" << ocena << endl;
     data.close();
 }
 
@@ -190,7 +190,7 @@ vector<pair<int, Ocena>> Pracownik::sprawdz_oceny_z_calego_toku_studiow(string f
     sort(temp_oceny.begin(), temp_oceny.end(), 
     [](const Ocena& o1, const Ocena& o2)
     {
-        if(o1.ocena > o2.ocena)
+        if(o1.semestr < o2.semestr)
         {
             return true;
         }

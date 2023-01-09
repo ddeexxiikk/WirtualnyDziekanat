@@ -4,3 +4,5 @@
 10001 Pan Tadeusz
 10020 Podstawy C++ dla studentow informatyki
 10002 Wiedzmin
+10006 Wiedzmin
+10006 Pan Tadeusz
