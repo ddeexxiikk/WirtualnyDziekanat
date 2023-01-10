@@ -6,3 +6,4 @@ IwIK;11i;Fizyka;F120;prof.Muc;12;15;90;2
 IwIK;12i;Python;E-2;mgr.Kedra;15;15;195;4
 IwIK;11i;W-F;A1;prof.Jakis;12;15;90;3
 IwIK;12i;W-F;A1;prof.Jakis;14;15;90;3
+IwIK;11i;Elektronika;E-1;prof.Elektronik;7;30;180;5

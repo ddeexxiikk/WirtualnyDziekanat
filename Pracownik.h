@@ -20,6 +20,8 @@ class Pracownik:public Czlowiek
         bool sprawdz_plan_zajec_studenta(string akierunek, string agrupa);
         int dodaj_ksiazke_studentowi(string alogin, string atytul);
         int usun_ksiazke_studentowi(string alogin, string atytul);
+        int usun_wszystkie_ksiazki_studenta(string alogin);
+        int usun_wszystkie_oceny_studenta(string alogin);
         void dodaj_plan_zajec(string kierunek, string grupa, Plan_zajec::lekcja lekcja);
         void wyswietl_informacje() override;
         

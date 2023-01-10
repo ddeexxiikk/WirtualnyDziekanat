@@ -419,12 +419,17 @@ bool obsluz_opcje(int opcja, void *&obiekt, Log& log)
                 int rezultat = ((Pracownik*)obiekt)->dodaj_ksiazke_studentowi(login, tytul);
                 if(rezultat == 1) 
                 {
-                    cout << "Brak ksiazki na stanie biblioteki" << endl;
+                    cout << "\nBrak ksiazki na stanie biblioteki" << endl;
                     log.zapisz_akcje("wypozyczono ksiazke:brak ksiazki na stanie biblioteki");
+                }
+                else if(rezultat == 2)
+                {
+                    cout << "\nStudent posiada juz dana ksiazke" << endl;
+                    log.zapisz_akcje("wypozyczono ksiazke:student posiada juz dana ksiazke");
                 }
                 else
                 {
-                    cout << "Wypozyczono ksiazke" << endl;
+                    cout << "\nWypozyczono ksiazke" << endl;
                     log.zapisz_akcje("wypozyczono ksiazke:" + login + " " + tytul);
                 }
                 break;
@@ -567,6 +572,8 @@ bool obsluz_opcje(int opcja, void *&obiekt, Log& log)
                 }
                 else
                 {
+                    ((Pracownik*)obiekt)->usun_wszystkie_ksiazki_studenta(login);
+                    ((Pracownik*)obiekt)->usun_wszystkie_oceny_studenta(login);
                     cout << "\nUsunieto studenta" << endl;
                     log.zapisz_akcje("usunieto studenta:" + login + " " + imie + " " + nazwisko);
                 }

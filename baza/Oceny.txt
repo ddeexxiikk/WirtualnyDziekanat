@@ -14,3 +14,7 @@
 10006;Angielski;1;5
 10006;Fizyka;1;5
 10006;Java;3;4
+10001;Elektronika;3;3
+10001;Uklady cyfrowe;4;5
+10006;Elektronika;3;5
+10006;Fizyka;1;5
