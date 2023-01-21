@@ -7,4 +7,14 @@
 10001;Fizyka;1;5
 10003;Fizyka;2;3
 10001;Python;1;5
-10020;Fizyka;1;3
+10006;Matematyka Dyskretna;2;3
+10006;W-F;2;5
+10006;Elektronika;2;4
+10006;Matematyka;1;3
+10006;Angielski;1;5
+10006;Fizyka;1;5
+10006;Java;3;4
+10001;Elektronika;3;3
+10001;Uklady cyfrowe;4;5
+10006;Elektronika;3;5
+10006;Fizyka;1;5

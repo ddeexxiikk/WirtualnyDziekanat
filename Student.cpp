@@ -144,7 +144,7 @@ vector<pair<int, Ocena>> Student::sprawdz_oceny_w_calym_toku_studiow()
     sort(temp_oceny.begin(), temp_oceny.end(), 
     [](const Ocena& o1, const Ocena& o2)
     {
-        if(o1.ocena > o2.ocena)
+        if(o1.semestr < o2.semestr)
         {
             return true;
         }
