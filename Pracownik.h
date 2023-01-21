@@ -24,8 +24,6 @@ class Pracownik:public Czlowiek
         int usun_wszystkie_oceny_studenta(string alogin);
         void dodaj_plan_zajec(string kierunek, string grupa, Plan_zajec::lekcja lekcja);
         void wyswietl_informacje() override;
-        
-    protected:
 
     private:
         int _stoi(const string& str, size_t* pos, int base);

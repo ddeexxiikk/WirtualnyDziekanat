@@ -1,5 +1,5 @@
 #ifndef WIRTUALNYDZIEKANAT_CZLOWIEK_H
-#define WIRTUALNYDZIEKANAT_CZLOWIEK_H
+#define WIRTUALNYDZIEKANAT_CZLOWIEK_HSS
 #include <string>
 
 using namespace std;

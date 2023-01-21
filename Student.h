@@ -19,8 +19,6 @@ class Student : public Czlowiek
 
         void wyswietl_informacje() override;
 
-    protected:
-
     private:
         bool wczytaj_ksiazki();
         bool wczytaj_oceny();

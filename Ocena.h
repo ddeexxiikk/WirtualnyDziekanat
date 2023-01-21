@@ -8,8 +8,7 @@ using namespace std;
 class Ocena
 {
 public:
-    Ocena(string aprzedmiot, int asemestr, int aocena) : przedmiot(aprzedmiot), semestr(asemestr), ocena(aocena)
-    {} 
+    Ocena(string aprzedmiot, int asemestr, int aocena) : przedmiot(aprzedmiot), semestr(asemestr), ocena(aocena){}
             
     string przedmiot;
     int semestr;
