@@ -2,6 +2,7 @@
 #define WYJATKI_H
 
 #include <stdexcept>
+
 using namespace std;
 
 class BladPliku : public exception 

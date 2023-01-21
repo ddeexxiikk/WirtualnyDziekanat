@@ -2,6 +2,7 @@
 #include <fstream>
 #include <iostream>
 #include "Wyjatki.h"
+
 using namespace std;
 
 Czlowiek::Czlowiek(string alogin, string aimie, string anazwisko)

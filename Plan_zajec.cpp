@@ -1,8 +1,6 @@
 #include "Plan_zajec.h"
-#include <fstream>
 #include <iostream>
 #include <bits/stdc++.h>
-#include <sstream>
 #include "Wyjatki.h"
 using namespace std;
 

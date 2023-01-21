@@ -1,6 +1,5 @@
 #include "Panel.h"
 #include <iostream>
-#include <windows.h>
 #include <string>
 #include <fstream>
 #include <algorithm>

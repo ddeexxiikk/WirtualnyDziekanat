@@ -1,11 +1,6 @@
 #include "Panel.h"
-#include <windows.h>
 #include <iostream>
-#include <fstream>
-#include "Student.h"
-#include "Pracownik.h"
 #include "Log.h"
-#include "Plan_zajec.h"
 #include "Wyjatki.h"
 
 using namespace std;
