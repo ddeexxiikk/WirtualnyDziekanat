@@ -114,6 +114,7 @@ int wybor_opcji(int min_przedzialu, int max_przedzialu)
     int iwybor;
     cin>>wybor;
     if(wybor=="q") return -20;
+    if(wybor.find_first_not_of("0123456789") != std::string::npos) throw BladWyboru("Zly wybor");
     iwybor=stoi(wybor);
     while(iwybor<min_przedzialu||iwybor>max_przedzialu)
     {

@@ -461,7 +461,6 @@ int Pracownik::usun_ksiazke_studentowi(string alogin, string atytul)
         }
         if(temptytul != atytul || templogin != alogin)
         {
-            cout << temptytul << " " << atytul << " " << templogin << " " << alogin << endl;
             plik += line + '\n';
         }
         else

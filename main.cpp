@@ -27,8 +27,15 @@ int main()
         bool result = true;
         while(result)
         {
-            opcja=wyswietlanie_menu(poziom_dostepu, obiekt);
-            result=obsluz_opcje(opcja, obiekt, log);
+            try
+            {
+                opcja=wyswietlanie_menu(poziom_dostepu, obiekt);
+                result=obsluz_opcje(opcja, obiekt, log);
+            }
+            catch(const BladWyboru& e)
+            {
+                system("cls");
+            }
         }
         log.zapisz_akcje("zakonczono dzialanie programu");
         delete obiekt;
