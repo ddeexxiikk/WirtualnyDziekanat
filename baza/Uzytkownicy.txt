@@ -4,3 +4,5 @@
 10004 admin 2
 10006 password6 1
 10007 password7 1
+10008 haslo8 1
+10009 haslo9 1

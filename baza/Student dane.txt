@@ -2,3 +2,5 @@
 10002 Kamil Gawlik IwIK 11i 1
 10003 Michal Batycki IwIK 12i 1
 10006 Elim Garak IwIK 11i 1
+10008 Gul Dukat IwIK 11i 1
+10009 Jean-Luc Picard IwIK 11i 1
